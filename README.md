@@ -12,4 +12,7 @@ https://play.google.com/store/apps/details?id=eu.siebeck.sipswitch
 LICENSE
 =======
 
+The source code of this project has been published under the 
+GNU GENERAL PUBLIC LICENSE.
+
 See COPYING.txt for the GNU GENERAL PUBLIC LICENSE
