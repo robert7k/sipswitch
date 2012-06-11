@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SIP Switch</string>
+    <string name="setting_not_supported">SIP settings could not be read. Please make sure your
+        phone supports SIP and you have configured at leat one account.</string>
+	<string name="sip">SIP</string>
+	<string name="mode_ask">Asking before each call whether to use SIP.</string>
+	<string name="mode_sip">Using SIP for all calls.</string>
+	<string name="mode_phone">Using SIP only for calls to SIP numbers.</string>
+</resources>
