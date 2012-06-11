@@ -13,7 +13,7 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 /**
- * @author Robert G. Siebeck <robert@siebeck.eu>
+ * @author Robert G. Siebeck <robert@siebeck.org>
  *
  */
 public class SipSwitchActivity extends AppWidgetProvider {
