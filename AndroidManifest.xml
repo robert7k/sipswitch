@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.siebeck.sipswitch"
-    android:versionCode="2"
-    android:versionName="1.0.1" >
+    android:versionCode="3"
+    android:versionName="1.0.2" >
 
-    <uses-sdk android:minSdkVersion="10" />
+    <uses-sdk android:targetSdkVersion="16" android:minSdkVersion="10" />
 <!--     <uses-permission android:name="android.permission.USE_SIP"/> -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>

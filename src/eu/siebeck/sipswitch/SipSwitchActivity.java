@@ -31,24 +31,22 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			final AppWidgetManager appWidgetManager, final int[] widgetIds) {
 //		Debug.waitForDebugger();
 
-		int sipReceiveCalls = -1;
-		String callMode = "";
+		int sipReceiveCalls = 0;
 		try {
 			sipReceiveCalls = Settings.System.getInt(
 					context.getContentResolver(),
 					Settings.System.SIP_RECEIVE_CALLS);
-			callMode = Settings.System.getString(
-					context.getContentResolver(),
-					Settings.System.SIP_CALL_OPTIONS);
-
 		} catch (final SettingNotFoundException e) {
 			Log.w(LOG, e);
-			Toast.makeText(
-					context,
-					context.getResources().getString(
-							R.string.setting_not_supported),
-					Toast.LENGTH_LONG).show();
-			return;
+			setReceiveCalls(context, sipReceiveCalls);
+		}
+
+		final String callMode = Settings.System.getString(
+					context.getContentResolver(),
+					Settings.System.SIP_CALL_OPTIONS);
+		if (callMode == null) {
+			Log.w(LOG, "SIP_CALL_OPTIONS was null");
+			setCallMode(context, Settings.System.SIP_ASK_ME_EACH_TIME);
 		}
 
 		final RemoteViews views = new RemoteViews(
@@ -96,18 +94,13 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		if (ENABLE_SIP_ACTION.equals(action)) {
 //			Debug.waitForDebugger();
 			final int receiveCalls = intent.getIntExtra(EXTRA_RECEIVE_CALLS, 0) ^ 1;
-			Log.i(LOG, "Set receiveCalls to " + receiveCalls);
-			Settings.System.putInt(context.getContentResolver(),
-					Settings.System.SIP_RECEIVE_CALLS, receiveCalls);
+			setReceiveCalls(context, receiveCalls);
 			updateWidgetView(context);
 		} else if (CALL_MODE.equals(action)) {
 //			Debug.waitForDebugger();
 
-			final String callMode = toggleCallMode(intent
-					.getStringExtra(EXTRA_CALL_MODE));
-			Log.i(LOG, "Setting callMode to " + callMode);
-			Settings.System.putString(context.getContentResolver(),
-					Settings.System.SIP_CALL_OPTIONS, callMode);
+			final String callMode = toggleCallMode(intent.getStringExtra(EXTRA_CALL_MODE));
+			setCallMode(context, callMode);
 
 			updateWidgetView(context);
 
@@ -115,6 +108,19 @@ public class SipSwitchActivity extends AppWidgetProvider {
 					Toast.LENGTH_SHORT).show();
 		}
 		super.onReceive(context, intent);
+	}
+
+	private void setCallMode(final Context context, final String callMode) {
+		Log.i(LOG, "Setting callMode to " + callMode);
+		Settings.System.putString(context.getContentResolver(),
+				Settings.System.SIP_CALL_OPTIONS, callMode);
+	}
+
+	private void setReceiveCalls(final Context context, final int receiveCalls) {
+		Log.i(LOG, "Set receiveCalls to " + receiveCalls);
+		Settings.System.putInt(
+				context.getContentResolver(),
+				Settings.System.SIP_RECEIVE_CALLS, receiveCalls);
 	}
 
 	private void updateWidgetView(final Context context) {
