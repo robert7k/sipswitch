@@ -32,7 +32,6 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		SIP_ADDRESS_ONLY = "SIP_ADDRESS_ONLY",
 		SIP_ASK_ME_EACH_TIME = "SIP_ASK_ME_EACH_TIME";
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onUpdate(final Context context,
 			final AppWidgetManager appWidgetManager, final int[] widgetIds) {
