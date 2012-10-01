@@ -25,6 +25,13 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			ENABLE_SIP_ACTION = "eu.siebeck.sipswitch.ENABLE_SIP",
 			CALL_MODE = "eu.siebeck.sipswitch.CALL_MODE";
 
+	private static final String
+		SIP_RECEIVE_CALLS = "sip_receive_calls",
+		SIP_CALL_OPTIONS = "sip_call_options",
+		SIP_ALWAYS = "SIP_ALWAYS",
+		SIP_ADDRESS_ONLY = "SIP_ADDRESS_ONLY",
+		SIP_ASK_ME_EACH_TIME = "SIP_ASK_ME_EACH_TIME";
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public void onUpdate(final Context context,
@@ -35,7 +42,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		try {
 			sipReceiveCalls = Settings.System.getInt(
 					context.getContentResolver(),
-					Settings.System.SIP_RECEIVE_CALLS);
+					SIP_RECEIVE_CALLS);
 		} catch (final SettingNotFoundException e) {
 			Log.w(LOG, e);
 			setReceiveCalls(context, sipReceiveCalls);
@@ -43,10 +50,10 @@ public class SipSwitchActivity extends AppWidgetProvider {
 
 		final String callMode = Settings.System.getString(
 					context.getContentResolver(),
-					Settings.System.SIP_CALL_OPTIONS);
+					SIP_CALL_OPTIONS);
 		if (callMode == null) {
 			Log.w(LOG, "SIP_CALL_OPTIONS was null");
-			setCallMode(context, Settings.System.SIP_ASK_ME_EACH_TIME);
+			setCallMode(context, SIP_ASK_ME_EACH_TIME);
 		}
 
 		final RemoteViews views = new RemoteViews(
@@ -113,14 +120,14 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	private void setCallMode(final Context context, final String callMode) {
 		Log.i(LOG, "Setting callMode to " + callMode);
 		Settings.System.putString(context.getContentResolver(),
-				Settings.System.SIP_CALL_OPTIONS, callMode);
+				SIP_CALL_OPTIONS, callMode);
 	}
 
 	private void setReceiveCalls(final Context context, final int receiveCalls) {
 		Log.i(LOG, "Set receiveCalls to " + receiveCalls);
 		Settings.System.putInt(
 				context.getContentResolver(),
-				Settings.System.SIP_RECEIVE_CALLS, receiveCalls);
+				SIP_RECEIVE_CALLS, receiveCalls);
 	}
 
 	private void updateWidgetView(final Context context) {
@@ -136,36 +143,36 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	}
 
 	private int getModeToast(final String callMode) {
-		if (Settings.System.SIP_ASK_ME_EACH_TIME.equals(callMode))
+		if (SIP_ASK_ME_EACH_TIME.equals(callMode))
 			return R.string.mode_ask;
-		else if (Settings.System.SIP_ADDRESS_ONLY.equals(callMode))
+		else if (SIP_ADDRESS_ONLY.equals(callMode))
 			return R.string.mode_phone;
 		else
 			return R.string.mode_sip;
 	}
 
 	private String toggleCallMode(final String callMode) {
-		if (Settings.System.SIP_ASK_ME_EACH_TIME.equals(callMode))
-			return Settings.System.SIP_ADDRESS_ONLY;
-		else if (Settings.System.SIP_ADDRESS_ONLY.equals(callMode))
-			return Settings.System.SIP_ALWAYS;
+		if (SIP_ASK_ME_EACH_TIME.equals(callMode))
+			return SIP_ADDRESS_ONLY;
+		else if (SIP_ADDRESS_ONLY.equals(callMode))
+			return SIP_ALWAYS;
 		else
-			return Settings.System.SIP_ASK_ME_EACH_TIME;
+			return SIP_ASK_ME_EACH_TIME;
 	}
 
 	private int getModeIndicator(final String callMode) {
-		if (Settings.System.SIP_ASK_ME_EACH_TIME.equals(callMode))
+		if (SIP_ASK_ME_EACH_TIME.equals(callMode))
 			return R.drawable.appwidget_settings_ind_mid_r;
-		else if (Settings.System.SIP_ADDRESS_ONLY.equals(callMode))
+		else if (SIP_ADDRESS_ONLY.equals(callMode))
 			return R.drawable.appwidget_settings_ind_off_r;
 		else
 			return R.drawable.appwidget_settings_ind_on_r;
 	}
 
 	private int getModeImage(final String callMode) {
-		if (Settings.System.SIP_ASK_ME_EACH_TIME.equals(callMode))
+		if (SIP_ASK_ME_EACH_TIME.equals(callMode))
 			return R.drawable.mode_ask;
-		else if (Settings.System.SIP_ADDRESS_ONLY.equals(callMode))
+		else if (SIP_ADDRESS_ONLY.equals(callMode))
 			return R.drawable.mode_phone;
 		else
 			return R.drawable.mode_sip;
