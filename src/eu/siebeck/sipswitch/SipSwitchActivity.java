@@ -7,7 +7,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
@@ -17,16 +16,13 @@ import android.widget.Toast;
  *
  */
 public class SipSwitchActivity extends AppWidgetProvider {
-	private static final String
-			EXTRA_RECEIVE_CALLS = "eu.siebeck.sipswitch.EXTRA_RECEIVE_CALLS",
-			EXTRA_CALL_MODE = "eu.siebeck.sipswitch.EXTRA_CALL_MODE";
+	private static final String EXTRA_CALL_MODE = "eu.siebeck.sipswitch.EXTRA_CALL_MODE";
 	private static final String LOG = SipSwitchActivity.class.getName();
 	public static final String
 			ENABLE_SIP_ACTION = "eu.siebeck.sipswitch.ENABLE_SIP",
 			CALL_MODE = "eu.siebeck.sipswitch.CALL_MODE";
 
 	private static final String
-		SIP_RECEIVE_CALLS = "sip_receive_calls",
 		SIP_CALL_OPTIONS = "sip_call_options",
 		SIP_ALWAYS = "SIP_ALWAYS",
 		SIP_ADDRESS_ONLY = "SIP_ADDRESS_ONLY",
@@ -36,16 +32,6 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	public void onUpdate(final Context context,
 			final AppWidgetManager appWidgetManager, final int[] widgetIds) {
 //		Debug.waitForDebugger();
-
-		int sipReceiveCalls = 0;
-		try {
-			sipReceiveCalls = Settings.System.getInt(
-					context.getContentResolver(),
-					SIP_RECEIVE_CALLS);
-		} catch (final SettingNotFoundException e) {
-			Log.w(LOG, e);
-			setReceiveCalls(context, sipReceiveCalls);
-		}
 
 		final String callMode = Settings.System.getString(
 					context.getContentResolver(),
@@ -59,18 +45,12 @@ public class SipSwitchActivity extends AppWidgetProvider {
 				context.getApplicationContext().getPackageName(),
 				R.layout.widget_layout);
 
-		views.setImageViewResource(R.id.img_sip,
-				sipReceiveCalls == 1 ? R.drawable.sip_on : R.drawable.sip_off);
-		views.setImageViewResource(R.id.ind_sip,
-				sipReceiveCalls == 1 ? R.drawable.appwidget_settings_ind_on_l
-						: R.drawable.appwidget_settings_ind_off_l);
+		views.setImageViewResource(R.id.img_sip, R.drawable.sip_on);
 		views.setImageViewResource(R.id.ind_mode, getModeIndicator(callMode));
 		views.setImageViewResource(R.id.img_mode, getModeImage(callMode));
 
-		final Intent enableSipClickIntent = new Intent(context,
-				SipSwitchActivity.class);
+		final Intent enableSipClickIntent = new Intent(context, SipSwitchActivity.class);
 		enableSipClickIntent.setAction(ENABLE_SIP_ACTION);
-		enableSipClickIntent.putExtra(EXTRA_RECEIVE_CALLS, sipReceiveCalls);
 
 		final PendingIntent pendingSipClickIntent = PendingIntent.getBroadcast(
 				context, 0, enableSipClickIntent,
@@ -98,20 +78,20 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	public void onReceive(final Context context, final Intent intent) {
 		final String action = intent.getAction();
 		if (ENABLE_SIP_ACTION.equals(action)) {
-//			Debug.waitForDebugger();
-			final int receiveCalls = intent.getIntExtra(EXTRA_RECEIVE_CALLS, 0) ^ 1;
-			setReceiveCalls(context, receiveCalls);
-			updateWidgetView(context);
+			final Intent sipSettingsIntent = new Intent();
+			final ComponentName SipSettingsComponent =
+					ComponentName.unflattenFromString("com.android.phone/.sip.SipSettings");
+			sipSettingsIntent.setComponent(SipSettingsComponent);
+			sipSettingsIntent.setAction("android.intent.action.MAIN");
+			sipSettingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			context.startActivity(sipSettingsIntent);
 		} else if (CALL_MODE.equals(action)) {
-//			Debug.waitForDebugger();
-
 			final String callMode = toggleCallMode(intent.getStringExtra(EXTRA_CALL_MODE));
 			setCallMode(context, callMode);
 
 			updateWidgetView(context);
 
-			Toast.makeText(context, getModeToast(callMode),
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, getModeToast(callMode), Toast.LENGTH_SHORT).show();
 		}
 		super.onReceive(context, intent);
 	}
@@ -120,13 +100,6 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		Log.i(LOG, "Setting callMode to " + callMode);
 		Settings.System.putString(context.getContentResolver(),
 				SIP_CALL_OPTIONS, callMode);
-	}
-
-	private void setReceiveCalls(final Context context, final int receiveCalls) {
-		Log.i(LOG, "Set receiveCalls to " + receiveCalls);
-		Settings.System.putInt(
-				context.getContentResolver(),
-				SIP_RECEIVE_CALLS, receiveCalls);
 	}
 
 	private void updateWidgetView(final Context context) {
