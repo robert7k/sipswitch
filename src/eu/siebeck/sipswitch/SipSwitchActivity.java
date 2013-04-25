@@ -1,11 +1,14 @@
 package eu.siebeck.sipswitch;
 
+import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -41,35 +44,30 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			setCallMode(context, SIP_ASK_ME_EACH_TIME);
 		}
 
-		final RemoteViews views = new RemoteViews(
-				context.getApplicationContext().getPackageName(),
-				R.layout.widget_layout);
-
-		views.setImageViewResource(R.id.img_sip, R.drawable.sip_on);
-		views.setImageViewResource(R.id.ind_mode, getModeIndicator(callMode));
-		views.setImageViewResource(R.id.img_mode, getModeImage(callMode));
-
-		final Intent enableSipClickIntent = new Intent(context, SipSwitchActivity.class);
-		enableSipClickIntent.setAction(ENABLE_SIP_ACTION);
-
-		final PendingIntent pendingSipClickIntent = PendingIntent.getBroadcast(
-				context, 0, enableSipClickIntent,
-				PendingIntent.FLAG_UPDATE_CURRENT);
-		views.setOnClickPendingIntent(R.id.sipButton,
-				pendingSipClickIntent);
-
-		final Intent callModeClickIntent = new Intent(context,
-				SipSwitchActivity.class);
-		callModeClickIntent.setAction(CALL_MODE);
-		callModeClickIntent.putExtra(EXTRA_CALL_MODE, callMode);
-
-		final PendingIntent pendingCallModeClickIntent = PendingIntent
-				.getBroadcast(context, 0, callModeClickIntent,
-						PendingIntent.FLAG_UPDATE_CURRENT);
-		views.setOnClickPendingIntent(R.id.callModeButton,
-				pendingCallModeClickIntent);
-
 		for (final int widgetId : widgetIds) {
+			final RemoteViews views = getRemoteViews(context, appWidgetManager, widgetId);
+
+			views.setImageViewResource(R.id.img_sip, R.drawable.sip_on);
+			views.setImageViewResource(R.id.ind_mode, getModeIndicator(callMode));
+			views.setImageViewResource(R.id.img_mode, getModeImage(callMode));
+
+			final Intent enableSipClickIntent = new Intent(context, SipSwitchActivity.class);
+			enableSipClickIntent.setAction(ENABLE_SIP_ACTION);
+
+			final PendingIntent pendingSipClickIntent = PendingIntent.getBroadcast(
+					context, 0, enableSipClickIntent,
+					PendingIntent.FLAG_UPDATE_CURRENT);
+			views.setOnClickPendingIntent(R.id.sipButton, pendingSipClickIntent);
+
+			final Intent callModeClickIntent = new Intent(context, SipSwitchActivity.class);
+			callModeClickIntent.setAction(CALL_MODE);
+			callModeClickIntent.putExtra(EXTRA_CALL_MODE, callMode);
+
+			final PendingIntent pendingCallModeClickIntent = PendingIntent
+					.getBroadcast(context, 0, callModeClickIntent,
+							PendingIntent.FLAG_UPDATE_CURRENT);
+			views.setOnClickPendingIntent(R.id.callModeButton, pendingCallModeClickIntent);
+
 			appWidgetManager.updateAppWidget(widgetId, views);
 		}
 	}
@@ -94,6 +92,34 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			Toast.makeText(context, getModeToast(callMode), Toast.LENGTH_SHORT).show();
 		}
 		super.onReceive(context, intent);
+	}
+
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	@Override
+	public void onAppWidgetOptionsChanged(final Context context,
+			final AppWidgetManager appWidgetManager,
+			final int appWidgetId,
+			final android.os.Bundle newOptions) {
+		final RemoteViews views = getRemoteViews(context, appWidgetManager, appWidgetId);
+		appWidgetManager.updateAppWidget(appWidgetId, views);
+
+		onUpdate(context, appWidgetManager, new int[] {appWidgetId});
+
+		super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions);
+	}
+
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	private RemoteViews getRemoteViews (final Context context, final AppWidgetManager appWidgetManager, final int appWidgetId) {
+		final int width;
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+			width = 150;
+		} else {
+			final Bundle options = appWidgetManager.getAppWidgetOptions(appWidgetId);
+			width = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
+		}
+		final int layoutId = width < 100 ? R.layout.widget_layout_small : R.layout.widget_layout;
+		final RemoteViews views = new RemoteViews(context.getPackageName(), layoutId);
+		return views;
 	}
 
 	private void setCallMode(final Context context, final String callMode) {
