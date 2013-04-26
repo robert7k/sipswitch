@@ -8,7 +8,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -31,6 +30,8 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		SIP_ADDRESS_ONLY = "SIP_ADDRESS_ONLY",
 		SIP_ASK_ME_EACH_TIME = "SIP_ASK_ME_EACH_TIME";
 
+	private int layoutId = R.layout.widget_layout;
+
 	@Override
 	public void onUpdate(final Context context,
 			final AppWidgetManager appWidgetManager, final int[] widgetIds) {
@@ -45,7 +46,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		}
 
 		for (final int widgetId : widgetIds) {
-			final RemoteViews views = getRemoteViews(context, appWidgetManager, widgetId);
+			final RemoteViews views = getRemoteViews(context, widgetId);
 
 			views.setImageViewResource(R.id.img_sip, R.drawable.sip_on);
 			views.setImageViewResource(R.id.ind_mode, getModeIndicator(callMode));
@@ -90,6 +91,17 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			updateWidgetView(context);
 
 			Toast.makeText(context, getModeToast(callMode), Toast.LENGTH_SHORT).show();
+		} else if ("com.motorola.blur.home.ACTION_SET_WIDGET_SIZE".equals(action)) {
+			final int spanX = intent.getExtras().getInt("spanX");
+			final int spanY = intent.getExtras().getInt("spanY");
+			final int appWidgetId = intent.getExtras().getInt("appWidgetId");
+			Log.i(LOG, "Resized to " + spanX + " * " + spanY);
+			layoutId = spanX > 1 ? R.layout.widget_layout : R.layout.widget_layout_small;
+			final RemoteViews views = getRemoteViews(context, appWidgetId);
+
+			final AppWidgetManager appWidgetManager =
+					AppWidgetManager.getInstance(context.getApplicationContext());
+			updateWidget(context, appWidgetManager, appWidgetId, views);
 		}
 		super.onReceive(context, intent);
 	}
@@ -100,24 +112,25 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			final AppWidgetManager appWidgetManager,
 			final int appWidgetId,
 			final android.os.Bundle newOptions) {
-		final RemoteViews views = getRemoteViews(context, appWidgetManager, appWidgetId);
-		appWidgetManager.updateAppWidget(appWidgetId, views);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+			final int width = newOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
+			layoutId = width < 100 ? R.layout.widget_layout_small : R.layout.widget_layout;
+		}
 
-		onUpdate(context, appWidgetManager, new int[] {appWidgetId});
+		final RemoteViews views = getRemoteViews(context, appWidgetId);
+		updateWidget(context, appWidgetManager, appWidgetId, views);
 
 		super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions);
 	}
 
+	private void updateWidget(final Context context, final AppWidgetManager appWidgetManager,
+			final int appWidgetId, final RemoteViews views) {
+		appWidgetManager.updateAppWidget(appWidgetId, views);
+		onUpdate(context, appWidgetManager, new int[] {appWidgetId});
+	}
+
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-	private RemoteViews getRemoteViews (final Context context, final AppWidgetManager appWidgetManager, final int appWidgetId) {
-		final int width;
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-			width = 150;
-		} else {
-			final Bundle options = appWidgetManager.getAppWidgetOptions(appWidgetId);
-			width = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
-		}
-		final int layoutId = width < 100 ? R.layout.widget_layout_small : R.layout.widget_layout;
+	private RemoteViews getRemoteViews (final Context context, final int appWidgetId) {
 		final RemoteViews views = new RemoteViews(context.getPackageName(), layoutId);
 		return views;
 	}
