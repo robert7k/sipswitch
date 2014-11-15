@@ -18,7 +18,8 @@ import android.widget.Toast;
  *
  */
 public class SipSwitchActivity extends AppWidgetProvider {
-	private static final String 
+	private static final String
+		ENABLE_SIP_ACTION = "eu.siebeck.sipswitch.ENABLE_SIP",
 		CALL_MODE = "eu.siebeck.sipswitch.CALL_MODE",
 		EXTRA_CALL_MODE = "eu.siebeck.sipswitch.EXTRA_CALL_MODE";
 	private static final String LOG = SipSwitchActivity.class.getName();
@@ -47,8 +48,17 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		for (final int widgetId : widgetIds) {
 			final RemoteViews views = getRemoteViews(context, widgetId);
 
+			views.setImageViewResource(R.id.img_sip, R.drawable.sip_on);
 			views.setImageViewResource(R.id.ind_mode, getModeIndicator(callMode));
 			views.setImageViewResource(R.id.img_mode, getModeImage(callMode));
+
+			final Intent enableSipClickIntent = new Intent(context, SipSwitchActivity.class);
+			enableSipClickIntent.setAction(ENABLE_SIP_ACTION);
+
+			final PendingIntent pendingSipClickIntent = PendingIntent.getBroadcast(
+					context, 0, enableSipClickIntent,
+					PendingIntent.FLAG_UPDATE_CURRENT);
+			views.setOnClickPendingIntent(R.id.sipButton, pendingSipClickIntent);
 
 			final Intent callModeClickIntent = new Intent(context, SipSwitchActivity.class);
 			callModeClickIntent.setAction(CALL_MODE);
@@ -66,8 +76,17 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	@Override
 	public void onReceive(final Context context, final Intent intent) {
 		final String action = intent.getAction();
-		if (CALL_MODE.equals(action)) {
-	//		Debug.waitForDebugger();
+		if (ENABLE_SIP_ACTION.equals(action)) {
+//			Debug.waitForDebugger();
+			final Intent sipSettingsIntent = new Intent();
+			final ComponentName SipSettingsComponent =
+					ComponentName.unflattenFromString("com.android.phone/.sip.SipSettings");
+			sipSettingsIntent.setComponent(SipSettingsComponent);
+			sipSettingsIntent.setAction("android.intent.action.MAIN");
+			sipSettingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			context.startActivity(sipSettingsIntent);
+		} else if (CALL_MODE.equals(action)) {
+//			Debug.waitForDebugger();
 			final String callMode = toggleCallMode(intent.getStringExtra(EXTRA_CALL_MODE));
 			setCallMode(context, callMode);
 

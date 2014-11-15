@@ -7,6 +7,6 @@
     android:minWidth="110dp"
     android:minResizeWidth="60dp"
     android:minResizeHeight="40dp"
-    android:resizeMode="horizontal" >
+    android:resizeMode="horizontal">
 
 </appwidget-provider>
