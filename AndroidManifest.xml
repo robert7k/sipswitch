@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.siebeck.sipswitch"
     android:versionCode="8"
-    android:versionName="1.0.7" >
+    android:versionName="1.0.8" >
 
-    <uses-sdk android:targetSdkVersion="17" android:minSdkVersion="10" />
+    <uses-sdk android:targetSdkVersion="17" android:minSdkVersion="10" android:maxSdkVersion="20" />
 <!--     <uses-permission android:name="android.permission.USE_SIP"/> -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-feature android:name="android.software.sip.voip" android:required="true"/>
