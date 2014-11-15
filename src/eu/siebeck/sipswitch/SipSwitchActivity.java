@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Debug;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -77,14 +78,23 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	public void onReceive(final Context context, final Intent intent) {
 		final String action = intent.getAction();
 		if (ENABLE_SIP_ACTION.equals(action)) {
-//			Debug.waitForDebugger();
+			Debug.waitForDebugger();
 			final Intent sipSettingsIntent = new Intent();
-			final ComponentName SipSettingsComponent =
-					ComponentName.unflattenFromString("com.android.phone/.sip.SipSettings");
-			sipSettingsIntent.setComponent(SipSettingsComponent);
+			final String sipSettingsComponentName;
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+				sipSettingsComponentName = "com.android.phone/.settings.PhoneAccountSettingsActivity";
+			} else {
+				sipSettingsComponentName = "com.android.phone/.sip.SipSettings";
+			}
+			final ComponentName sipSettingsComponent = ComponentName.unflattenFromString(sipSettingsComponentName);
+			sipSettingsIntent.setComponent(sipSettingsComponent);
 			sipSettingsIntent.setAction("android.intent.action.MAIN");
 			sipSettingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			context.startActivity(sipSettingsIntent);
+			try {
+				context.startActivity(sipSettingsIntent);
+			} catch(final Exception e) {
+				Log.e(LOG, "Error starting intent", e);
+			}
 		} else if (CALL_MODE.equals(action)) {
 //			Debug.waitForDebugger();
 			final String callMode = toggleCallMode(intent.getStringExtra(EXTRA_CALL_MODE));
