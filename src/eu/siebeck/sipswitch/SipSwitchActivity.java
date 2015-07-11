@@ -23,6 +23,15 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		ENABLE_SIP_ACTION = "eu.siebeck.sipswitch.ENABLE_SIP",
 		CALL_MODE = "eu.siebeck.sipswitch.CALL_MODE",
 		EXTRA_CALL_MODE = "eu.siebeck.sipswitch.EXTRA_CALL_MODE";
+	/**
+	 * Action string for the SIP call option configuration changed intent.
+	 * This is used to communicate  change to the SIP call option, triggering re-registration of
+	 * the SIP phone accounts.
+	 * Internal use only.
+	 * @hide
+	 */
+	public static final String ACTION_SIP_CALL_OPTION_CHANGED =
+			"com.android.phone.SIP_CALL_OPTION_CHANGED";
 	private static final String LOG = SipSwitchActivity.class.getName();
 
 	private static final String
@@ -39,8 +48,8 @@ public class SipSwitchActivity extends AppWidgetProvider {
 //		Debug.waitForDebugger();
 
 		final String callMode = Settings.System.getString(
-					context.getContentResolver(),
-					SIP_CALL_OPTIONS);
+				context.getContentResolver(),
+				SIP_CALL_OPTIONS);
 		if (callMode == null) {
 			Log.w(LOG, "SIP_CALL_OPTIONS was null");
 			setCallMode(context, SIP_ASK_ME_EACH_TIME);
@@ -151,6 +160,12 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		Log.i(LOG, "Setting callMode to " + callMode);
 		Settings.System.putString(context.getContentResolver(),
 				SIP_CALL_OPTIONS, callMode);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+			// Notify SipAccountRegistry in the telephony layer that the configuration has changed.
+			Intent intent = new Intent(ACTION_SIP_CALL_OPTION_CHANGED);
+			context.sendBroadcast(intent);
+		}
 	}
 
 	private void updateWidgetView(final Context context) {
