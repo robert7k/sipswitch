@@ -161,7 +161,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		Settings.System.putString(context.getContentResolver(),
 				SIP_CALL_OPTIONS, callMode);
 
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 			// Notify SipAccountRegistry in the telephony layer that the configuration has changed.
 			Intent intent = new Intent(ACTION_SIP_CALL_OPTION_CHANGED);
 			context.sendBroadcast(intent);
