@@ -9,83 +9,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65858427-cc09-4cdd-a2b4-cdebfdc8632b" name="Default" comment="Migrate from Eclipse to Android Studio and gradle">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SipSwitch.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradlew.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradlew" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/settings.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.classpath" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.project" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/icon.xcf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project.properties" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/app_gauge.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/app_gauge.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/app_settings.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/app_settings.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_bg.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_bg.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_inner_focus_c.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_inner_focus_c.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_inner_focus_l.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_inner_focus_l.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_inner_focus_r.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_inner_focus_r.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_inner_press_c.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_inner_press_c.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_inner_press_l.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_inner_press_l.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_inner_press_r.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_inner_press_r.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_settings_divider.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_settings_divider.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_settings_ind_mid_c.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_settings_ind_mid_c.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_settings_ind_mid_l.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_settings_ind_mid_l.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_settings_ind_mid_r.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_settings_ind_mid_r.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_settings_ind_off_c.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_settings_ind_off_c.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_settings_ind_off_l.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_settings_ind_off_l.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_settings_ind_off_r.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_settings_ind_off_r.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_settings_ind_on_c.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_settings_ind_on_c.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_settings_ind_on_l.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_settings_ind_on_l.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/appwidget_settings_ind_on_r.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/appwidget_settings_ind_on_r.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/mode_ask.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/mode_ask.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/mode_phone.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/mode_phone.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/mode_sip.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/mode_sip.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/sip_off.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/sip_off.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/sip_on.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/sip_on.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/app_gauge.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/app_gauge.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/app_settings.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/app_settings.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_bg.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_bg.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_inner_focus_c.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_inner_focus_c.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_inner_focus_l.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_inner_focus_l.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_inner_focus_r.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_inner_focus_r.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_inner_press_c.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_inner_press_c.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_inner_press_l.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_inner_press_l.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_inner_press_r.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_inner_press_r.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_settings_divider.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_settings_divider.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_settings_ind_mid_c.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_settings_ind_mid_c.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_settings_ind_mid_l.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_settings_ind_mid_l.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_settings_ind_mid_r.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_settings_ind_mid_r.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_settings_ind_off_c.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_settings_ind_off_c.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_settings_ind_off_l.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_settings_ind_off_l.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_settings_ind_off_r.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_settings_ind_off_r.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_settings_ind_on_c.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_settings_ind_on_c.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_settings_ind_on_l.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_settings_ind_on_l.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable-mdpi/appwidget_settings_ind_on_r.9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/appwidget_settings_ind_on_r.9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/appwidget_button_center.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/appwidget_button_center.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/appwidget_button_left.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/appwidget_button_left.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/appwidget_button_right.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/appwidget_button_right.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/drawable/icon.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/widget_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/widget_layout.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/layout/widget_layout_small.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/widget_layout_small.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/res/xml/widget_info.xml" afterPath="$PROJECT_DIR$/app/src/main/res/xml/widget_info.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/eu/siebeck/sipswitch/SipSwitchActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/eu/siebeck/sipswitch/SipSwitchActivity.java" />
+    <list default="true" id="65858427-cc09-4cdd-a2b4-cdebfdc8632b" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="SipSwitch.iws" />
@@ -108,46 +33,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="import-summary.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/import-summary.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="local.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2764977">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profiles_settings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="settings.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/settings.gradle">
           <provider selected="true" editor-type-id="text-editor">
@@ -188,16 +73,22 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.69124424">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1436658493996" expanded="true" signature="112629:112646" placeholder="..." />
-                <marker date="1436658493996" expanded="true" signature="112629:112664" placeholder="..." />
-                <marker date="1436658493996" expanded="true" signature="112629:112677" placeholder="..." />
-              </folding>
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -990,6 +881,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/eu/siebeck/sipswitch/SipSwitchActivity.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -1354,6 +1246,13 @@
       <option name="number" value="Default" />
       <updated>1436654266418</updated>
     </task>
+    <task id="LOCAL-00001" summary="Migrate from Eclipse to Android Studio and gradle">
+      <created>1436658752638</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1436658752638</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1408,14 +1307,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/import-summary.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradlew">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1582,51 +1473,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1436658493996" expanded="true" signature="112629:112646" placeholder="..." />
-            <marker date="1436658493996" expanded="true" signature="112629:112664" placeholder="..." />
-            <marker date="1436658493996" expanded="true" signature="112629:112677" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/import-summary.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1642,10 +1489,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24193548">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06912442">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2764977">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.69124424">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -10,11 +10,15 @@
 
 # generated files
 bin/
+build
 gen/
 
-# Local configuration file (sdk path, etc)
+#Gradle and IDEA stuff
 local.properties
+.gradle
+.idea/workspace.xml
+.idea/libraries
+
+# Local stuff
 .svn
 .directory
-.gradle
-build
