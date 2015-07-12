@@ -91,7 +91,9 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			final Intent sipSettingsIntent = new Intent();
 			final String sipSettingsComponentName;
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-				sipSettingsComponentName = "com.android.phone/.settings.PhoneAccountSettingsActivity";
+				// XXX PhoneAccountSettingsActivity is not exported by phone app. We could only call it with root access. For now, we simply call the parent activity CallFeaturesSetting and let the user navigate to the SIP settings.
+				// sipSettingsComponentName = "com.android.phone/.settings.PhoneAccountSettingsActivity";
+				sipSettingsComponentName = "com.android.phone/.CallFeaturesSetting";
 			} else {
 				sipSettingsComponentName = "com.android.phone/.sip.SipSettings";
 			}
