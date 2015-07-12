@@ -52,7 +52,10 @@ public class SipSwitchActivity extends AppWidgetProvider {
 				SIP_CALL_OPTIONS);
 		if (callMode == null) {
 			Log.w(LOG, "SIP_CALL_OPTIONS was null");
-			setCallMode(context, SIP_ASK_ME_EACH_TIME);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1)
+				setCallMode(context, SIP_ALWAYS);
+			else
+				setCallMode(context, SIP_ASK_ME_EACH_TIME);
 		}
 
 		for (final int widgetId : widgetIds) {
@@ -196,6 +199,8 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			return SIP_ADDRESS_ONLY;
 		else if (SIP_ADDRESS_ONLY.equals(callMode))
 			return SIP_ALWAYS;
+		else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1)
+			return SIP_ADDRESS_ONLY;
 		else
 			return SIP_ASK_ME_EACH_TIME;
 	}
