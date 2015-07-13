@@ -90,7 +90,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	public void onReceive(final Context context, final Intent intent) {
 		final String action = intent.getAction();
 		if (ENABLE_SIP_ACTION.equals(action)) {
-			Debug.waitForDebugger();
+			// Debug.waitForDebugger();
 			final Intent sipSettingsIntent = new Intent();
 			final String sipSettingsComponentName;
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
