@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="sip_settings" msgid="7083411056842490982">"Tetapan panggilan Internet"</string>
+    <string name="sip_accounts" msgid="5575635218475814144">"Akaun panggilan Internet (SIP)"</string>
+    <string name="sip_accounts_title" msgid="2082527045326874519">"Akaun"</string>
+    <string name="sip_receive_calls" msgid="426678617137462173">"Menerima panggilan masuk"</string>
+    <string name="sip_receive_calls_summary" msgid="7390078407518633658">"Mengurangkan hayat bateri"</string>
+    <string name="sip_call_options_title" msgid="1140346343222696780">"Guna panggilan Internet"</string>
+    <string name="sip_call_options_wifi_only_title" msgid="6659725576735517138">"Guna panggilan Internet (Wi-Fi sahaja)"</string>
+    <string name="sip_call_options_entry_1" msgid="7217659161237099900">"Untuk semua panggilan semasa rangkaian data tersedia"</string>
+    <string name="sip_call_options_entry_2" msgid="3432624809972300467">"Hanya untuk panggilan Internet"</string>
+    <string name="sip_call_options_entry_3" msgid="1493464396638124047">"Tanya untuk setiap panggilan"</string>
+    <string name="sip_call_options_wifi_only_entry_1" msgid="1358513095551847314">"Untuk semua panggilan"</string>
+    <string name="pick_outgoing_call_phone_type" msgid="7140865415705473564">"Membuat panggilan"</string>
+    <string name="pick_outgoing_sip_phone" msgid="635431914692273175">"Gunakan akaun panggilan Internet:"</string>
+    <string name="remember_my_choice" msgid="6204557816977242680">"Sentiasa gunakan untuk membuat panggilan Internet"</string>
+    <string name="reset_my_choice_hint" msgid="5681276499400166714">"Anda boleh menukar akaun panggilan Internet mana untuk digunakan secara lalai daripada skrin Telefon &gt; Tetapan &gt; tetapan panggilan Internet &gt; Akaun."</string>
+    <string name="pstn_phone" msgid="9596332924895028">"Panggilan telefon bimbit"</string>
+    <string name="internet_phone" msgid="4444458244774004247">"Panggilan internet"</string>
+    <string name="no_sip_account_found_title" msgid="1930267380483259657">"Tiada akaun panggilan Internet"</string>
+    <string name="no_sip_account_found" msgid="2584609532663311723">"Tidak ada akaun panggilan internet pada telefon ini. Adakah anda mahu menambah satu sekarang?"</string>
+    <string name="sip_menu_add" msgid="220996859802365311">"Tambah"</string>
+    <string name="add_sip_account" msgid="800843669753980091">"Tambah akaun"</string>
+    <string name="remove_sip_account" msgid="1367664438506503690">"Alih keluar akaun"</string>
+    <string name="sip_account_list" msgid="5610858485304821480">"Akaun SIP"</string>
+    <string name="saving_account" msgid="5336529880235177448">"Menyimpan akaun..."</string>
+    <string name="removing_account" msgid="5537351356808985756">"Mengalih keluar akaun..."</string>
+    <string name="sip_menu_save" msgid="7882219814563869225">"Simpan"</string>
+    <string name="sip_menu_discard" msgid="2350421645423888438">"Buang"</string>
+    <string name="alert_dialog_close" msgid="1326011828713435134">"Tutup profil"</string>
+    <string name="alert_dialog_ok" msgid="4752048404605388940">"OK"</string>
+    <string name="close_profile" msgid="3122414058856309881">"Tutup"</string>
+    <string name="primary_account_summary_with" msgid="3590771303761149724">"Akaun utama. <xliff:g id="REGISTRATION_STATUS">%s</xliff:g>"</string>
+    <string name="registration_status_checking_status" msgid="6136793741862200337">"Menyemak status..."</string>
+    <string name="registration_status_registering" msgid="2677183977796278749">"Mendaftar..."</string>
+    <string name="registration_status_still_trying" msgid="7648151061205513458">"Masih mencuba..."</string>
+    <string name="registration_status_not_receiving" msgid="7620333886153361090">"Tidak menerima panggilan."</string>
+    <string name="registration_status_no_data" msgid="2541999976218192413">"Pendaftaran akaun terhenti kerana tiada sambungan Internet."</string>
+    <string name="registration_status_no_wifi_data" msgid="9154717387473039546">"Pendaftaran akaun terhenti kerana tiada sambungan Wi-Fi."</string>
+    <string name="registration_status_not_running" msgid="514205414303796800">"Pendaftaran akaun tidak berjaya."</string>
+    <string name="registration_status_done" msgid="3264961069247314253">"Menerima panggilan"</string>
+    <string name="registration_status_failed_try_later" msgid="2199970021756384317">"Pendaftaran akaun tidak berjaya: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>); akan mencuba kemudian"</string>
+    <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"Pendaftaran akaun tidak berjaya: Nama pengguna atau kata laluan salah."</string>
+    <string name="registration_status_server_unreachable" msgid="7710275557045148634">"Pendaftaran akaun tidak berjaya: Periksa nama pelayan."</string>
+    <string name="third_party_account_summary" msgid="9041060473615403041">"Akaun ini sedang digunakan pada masa ini oleh apl <xliff:g id="ACCOUNT_OWNER">%s</xliff:g>."</string>
+    <string name="sip_edit_title" msgid="1967247832635750410">"Butiran akaun SIP"</string>
+    <string name="sip_edit_new_title" msgid="266414118302574305">"Butiran akaun SIP"</string>
+    <string name="domain_address_title" msgid="1968479941328225423">"Pelayan"</string>
+    <string name="username_title" msgid="6770064611005663470">"Nama Pengguna"</string>
+    <string name="password_title" msgid="5289013731515564295">"Kata laluan"</string>
+    <string name="display_name_title" msgid="579241787583079773">"Nama paparan"</string>
+    <string name="proxy_address_title" msgid="6890163365640631841">"Alamat proksi keluar"</string>
+    <string name="port_title" msgid="6693965912656593862">"Nombor port"</string>
+    <string name="transport_title" msgid="889155457465372527">"Jenis pengangkutan"</string>
+    <string name="send_keepalive_title" msgid="599627072150501159">"Hantar pengekal"</string>
+    <string name="set_primary_title" msgid="4418523822344363725">"Tetapkan sebagai akaun utama"</string>
+    <string name="set_primary_summary" msgid="8917913711425551278">"Digunakan untuk panggilan keluar"</string>
+    <string name="advanced_settings" msgid="6622996380747040711">"Tetapan pilihan"</string>
+    <string name="auth_username_title" msgid="8262491689004708265">"Nama pengguna pengesahan"</string>
+    <string name="auth_username_summary" msgid="941160241371436473">"Nama pengguna yang digunakan untuk pengesahan"</string>
+    <string name="default_preference_summary" msgid="1979249643719483249">"&lt;Tidak ditetapkan&gt;"</string>
+    <string name="display_name_summary" msgid="7155076491675565407">"&lt;Sama dengan nama pengguna&gt;"</string>
+    <string name="optional_summary" msgid="2363105560396317624">"&lt;Pilihan&gt;"</string>
+    <string name="advanced_settings_show" msgid="7838761602853998622">"▷ Sentuh untuk menunjukkan semua"</string>
+    <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ Sentuh untuk sembunyikan semua"</string>
+    <string name="empty_alert" msgid="6659484914371384024">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> diperlukan dan tidak boleh dibiarkan kosong."</string>
+    <string name="not_a_valid_port" msgid="7931422555587011830">"Nombor port harus berada dalam lingkungan 1000 dan 65534."</string>
+    <string name="no_internet_available_title" msgid="5967612364991972539">"Tiada sambungan Internet"</string>
+    <string name="no_wifi_available_title" msgid="3560623175076099410">"Tiada sambungan Wi-Fi"</string>
+    <string name="no_internet_available" msgid="3166751740849243568">"Untuk membuat panggilan Internet, semak sambungan Internet anda terlebih dahulu."</string>
+    <string name="no_wifi_available" msgid="8786934834522321080">"Anda perlu disambungkan kepada rangkaian Wi-Fi untuk membuat panggilan Internet (guna tetapan Wayarles &amp; Rangkaian)"</string>
+    <string name="no_voip" msgid="1600568347241920141">"Panggilan Internet tidak disokong"</string>
+    <string name="sip_system_decide" msgid="5577696249416700671">"Automatik"</string>
+    <string name="sip_always_send_keepalive" msgid="4773022409239823318">"Sentiasa hantar"</string>
+    <string name="sip_connection_service_label" msgid="9214942431972794760">"Panggilan Internet terbina dalam"</string>
+</resources>

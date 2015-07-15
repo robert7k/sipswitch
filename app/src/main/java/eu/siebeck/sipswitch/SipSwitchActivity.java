@@ -116,7 +116,10 @@ public class SipSwitchActivity extends AppWidgetProvider {
 
 			updateWidgetView(context);
 
-			Toast.makeText(context, getModeToast(callMode), Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, context.getString(R.string.toast,
+						context.getString(R.string.sip),
+						context.getString(getModeToast(callMode))),
+					Toast.LENGTH_SHORT).show();
 		} else if ("com.motorola.blur.home.ACTION_SET_WIDGET_SIZE".equals(action)) {
 			final int spanX = intent.getExtras().getInt("spanX");
 			final int spanY = intent.getExtras().getInt("spanY");
@@ -187,11 +190,11 @@ public class SipSwitchActivity extends AppWidgetProvider {
 
 	private int getModeToast(final String callMode) {
 		if (SIP_ASK_ME_EACH_TIME.equals(callMode))
-			return R.string.mode_ask;
+			return R.string.sip_call_options_entry_3;
 		else if (SIP_ADDRESS_ONLY.equals(callMode))
-			return R.string.mode_phone;
+			return R.string.sip_call_options_entry_2;
 		else
-			return R.string.mode_sip;
+			return R.string.sip_call_options_wifi_only_entry_1;
 	}
 
 	private String toggleCallMode(final String callMode) {

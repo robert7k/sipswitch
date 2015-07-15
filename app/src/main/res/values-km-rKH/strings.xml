@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="sip_settings" msgid="7083411056842490982">"កំណត់​ការ​ហៅ​តាម​អ៊ីនធឺណិត"</string>
+    <string name="sip_accounts" msgid="5575635218475814144">"គណនី (SIP) ការ​ហៅ​តាម​អ៊ីនធឺណិត"</string>
+    <string name="sip_accounts_title" msgid="2082527045326874519">"គណនី"</string>
+    <string name="sip_receive_calls" msgid="426678617137462173">"ទទួល​ការ​ហៅ​ចូល"</string>
+    <string name="sip_receive_calls_summary" msgid="7390078407518633658">"កាត់​បន្ថយ​អាយុ​ថ្ម"</string>
+    <string name="sip_call_options_title" msgid="1140346343222696780">"ប្រើ​ការ​ហៅ​តាម​អ៊ីនធឺណិត"</string>
+    <string name="sip_call_options_wifi_only_title" msgid="6659725576735517138">"ប្រើ​ការ​ហៅ​តាម​អ៊ីនធឺណិត (តែ​​វ៉ាយហ្វាយ​ប៉ុណ្ណោះ)"</string>
+    <string name="sip_call_options_entry_1" msgid="7217659161237099900">"សម្រាប់​ការ​ហៅ​ទាំងអស់ នៅ​ពេល​បណ្ដាញ​ទិន្នន័យ​អាច​ប្រើ​បាន"</string>
+    <string name="sip_call_options_entry_2" msgid="3432624809972300467">"​សម្រាប់​តែ​ការ​ហៅ​តាម​អ៊ីនធឺណិត​ប៉ុណ្ណោះ"</string>
+    <string name="sip_call_options_entry_3" msgid="1493464396638124047">"សួរ​រាល់​ពេល​ហៅ"</string>
+    <string name="sip_call_options_wifi_only_entry_1" msgid="1358513095551847314">"សម្រាប់​ការ​ហៅ​ទាំងអស់"</string>
+    <string name="pick_outgoing_call_phone_type" msgid="7140865415705473564">"ហៅ"</string>
+    <string name="pick_outgoing_sip_phone" msgid="635431914692273175">"ប្រើ​គណនី​ហៅ​តាម​អ៊ីនធឺណិត៖"</string>
+    <string name="remember_my_choice" msgid="6204557816977242680">"ប្រើ​ជានិច្ច ដើម្បី​​​ហៅ​តាម​អ៊ីនធឺណិត"</string>
+    <string name="reset_my_choice_hint" msgid="5681276499400166714">"អ្នក​អាច​ប្ដូរ​គណនី​ហៅ​តាម​អ៊ីនធឺណិត ដើម្បី​ប្រើ​តាម​លំនាំដើម​ពី​ទូរស័ព្ទ &gt; ការ​កំណត់ &gt; កំណត់​​ការ​ហៅ​តាម​អ៊ីនធឺណិត &gt; អេក្រង់​គណនី។"</string>
+    <string name="pstn_phone" msgid="9596332924895028">"ហៅ​តាម​ទូរស័ព្ទ​ចល័ត"</string>
+    <string name="internet_phone" msgid="4444458244774004247">"ការ​ហៅ​តាម​​អ៊ីនធឺណិត"</string>
+    <string name="no_sip_account_found_title" msgid="1930267380483259657">"មិន​មាន​​គណនី​ហៅ​តាម​អ៊ីនធឺណិត"</string>
+    <string name="no_sip_account_found" msgid="2584609532663311723">"មិន​មាន​គណនី​ហៅ​តាម​អ៊ីនធឺណិត​នៅ​លើ​ទូរស័ព្ទ​​នេះ​ទេ។ តើ​អ្នក​ចង់​​បន្ថែម​​​ឥឡូវនេះ​ឬ?"</string>
+    <string name="sip_menu_add" msgid="220996859802365311">"បន្ថែម"</string>
+    <string name="add_sip_account" msgid="800843669753980091">"បន្ថែម​គណនី"</string>
+    <string name="remove_sip_account" msgid="1367664438506503690">"លុប​គណនី​​"</string>
+    <string name="sip_account_list" msgid="5610858485304821480">"គណនី SIP"</string>
+    <string name="saving_account" msgid="5336529880235177448">"កំពុង​រក្សាទុក​គណនី…"</string>
+    <string name="removing_account" msgid="5537351356808985756">"កំពុង​លុប​គណនី…"</string>
+    <string name="sip_menu_save" msgid="7882219814563869225">"រក្សាទុក"</string>
+    <string name="sip_menu_discard" msgid="2350421645423888438">"បោះបង់"</string>
+    <string name="alert_dialog_close" msgid="1326011828713435134">"បិទ​​ប្រវត្តិរូប"</string>
+    <string name="alert_dialog_ok" msgid="4752048404605388940">"យល់ព្រម"</string>
+    <string name="close_profile" msgid="3122414058856309881">"បិទ"</string>
+    <string name="primary_account_summary_with" msgid="3590771303761149724">"គណនី​​ចម្បង។ <xliff:g id="REGISTRATION_STATUS">%s</xliff:g>"</string>
+    <string name="registration_status_checking_status" msgid="6136793741862200337">"កំពុង​ពិនិត្យ​​​ស្ថានភាព​..."</string>
+    <string name="registration_status_registering" msgid="2677183977796278749">"កំពុង​ចុះឈ្មោះ…"</string>
+    <string name="registration_status_still_trying" msgid="7648151061205513458">"នៅតែ​ព្យាយាម…"</string>
+    <string name="registration_status_not_receiving" msgid="7620333886153361090">"មិន​ទទួល​​ការ​ហៅ។"</string>
+    <string name="registration_status_no_data" msgid="2541999976218192413">"បាន​បញ្ឈប់​ការ​ចុះឈ្មោះ​គណនី ពីព្រោះ​​គ្មាន​ការ​ភ្ជាប់​អ៊ីនធឺណិត​។"</string>
+    <string name="registration_status_no_wifi_data" msgid="9154717387473039546">"បាន​បញ្ឈប់​ការ​ចុះឈ្មោះ​គណនី ពី​ព្រោះ​គ្មាន​ការ​​ភ្ជាប់​វ៉ាយហ្វាយ។"</string>
+    <string name="registration_status_not_running" msgid="514205414303796800">"បាន​បរាជ័យ​ការ​ចុះឈ្មោះ​គណនី។"</string>
+    <string name="registration_status_done" msgid="3264961069247314253">"ទទួល​ការ​ហៅ។"</string>
+    <string name="registration_status_failed_try_later" msgid="2199970021756384317">"បាន​បរាជ័យ​ការ​ចុះឈ្មោះ​គណនី​៖ ( <xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g> )​; នឹង​ព្យាយាម​នៅ​ពេល​ក្រោយ"</string>
+    <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"បាន​បរាជ័យ​ការ​ចុះឈ្មោះ​គណនី៖ ឈ្មោះ​អ្នកប្រើ ​ឬ​ពាក្យសម្ងាត់​មិន​ត្រឹមត្រូវ។"</string>
+    <string name="registration_status_server_unreachable" msgid="7710275557045148634">"បាន​បរាជ័យ​ការ​ចុះឈ្មោះ​គណនី៖ សូម​ពិនិត្យ​​ឈ្មោះ​ម៉ាស៊ីន​មេ។"</string>
+    <string name="third_party_account_summary" msgid="9041060473615403041">"បច្ចុប្បន្ន​គណនី​​នេះ​កំពុង​ប្រើ​ដោយ​កម្មវិធី  <xliff:g id="ACCOUNT_OWNER">%s</xliff:g> ។"</string>
+    <string name="sip_edit_title" msgid="1967247832635750410">"ព័ត៌មាន​​លម្អិត​គណនី​ SIP"</string>
+    <string name="sip_edit_new_title" msgid="266414118302574305">"ព័ត៌មាន​លម្អិត​គណនី​ SIP"</string>
+    <string name="domain_address_title" msgid="1968479941328225423">"ម៉ាស៊ីន​មេ"</string>
+    <string name="username_title" msgid="6770064611005663470">"ឈ្មោះ​អ្នកប្រើ"</string>
+    <string name="password_title" msgid="5289013731515564295">"ពាក្យសម្ងាត់"</string>
+    <string name="display_name_title" msgid="579241787583079773">"បង្ហាញ​ឈ្មោះ"</string>
+    <string name="proxy_address_title" msgid="6890163365640631841">"អាសយដ្ឋាន​ប្រូកស៊ី​ចេញ"</string>
+    <string name="port_title" msgid="6693965912656593862">"លេខ​ច្រក"</string>
+    <string name="transport_title" msgid="889155457465372527">"ប្រភេទ​បញ្ជូន"</string>
+    <string name="send_keepalive_title" msgid="599627072150501159">"នៅតែ​មាន​ការ​ផ្ញើ"</string>
+    <string name="set_primary_title" msgid="4418523822344363725">"កំណត់​ជា​គណនី​ចម្បង"</string>
+    <string name="set_primary_summary" msgid="8917913711425551278">"បាន​ប្រើ​សម្រាប់​ការ​ហៅ​ចេញ"</string>
+    <string name="advanced_settings" msgid="6622996380747040711">"ការ​កំណត់​​ជា​​ជម្រើស"</string>
+    <string name="auth_username_title" msgid="8262491689004708265">"ឈ្មោះ​អ្នកប្រើ​​សម្រាប់​​ផ្ទៀងផ្ទាត់"</string>
+    <string name="auth_username_summary" msgid="941160241371436473">"បាន​ប្រើ​ឈ្មោះ​អ្នកប្រើ​សម្រាប់​​​ផ្ទៀងផ្ទាត់"</string>
+    <string name="default_preference_summary" msgid="1979249643719483249">"&lt;មិន​បាន​កំណត់&gt;"</string>
+    <string name="display_name_summary" msgid="7155076491675565407">"&lt;ដូច​ឈ្មោះ​អ្នកប្រើ&gt;"</string>
+    <string name="optional_summary" msgid="2363105560396317624">"&lt;ជា​ជម្រើស&gt;"</string>
+    <string name="advanced_settings_show" msgid="7838761602853998622">"ប៉ះ ▷ ដើម្បី​បង្ហាញ​ទាំងអស់"</string>
+    <string name="advanced_settings_hide" msgid="3480554978705290228">"ប៉ះ ▽ ដើម្បី​លាក់​ទាំងអស់"</string>
+    <string name="empty_alert" msgid="6659484914371384024">"មិន​​អាច​ទុក​ឲ្យ​នៅ​ទទេ និង​បាន​ទាមទារ <xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> ។"</string>
+    <string name="not_a_valid_port" msgid="7931422555587011830">"លេខ​ច្រក​គួរតែ​នៅ​ចន្លោះ ១០០០ និង ៦៥៥៣៤។"</string>
+    <string name="no_internet_available_title" msgid="5967612364991972539">"មិន​មាន​ការ​​ភ្ជាប់​អ៊ីនធឺណិត"</string>
+    <string name="no_wifi_available_title" msgid="3560623175076099410">"មិន​មាន​​ការ​តភ្ជាប់​តាម​​វ៉ាយហ្វាយ​"</string>
+    <string name="no_internet_available" msgid="3166751740849243568">"ដើម្បី​ហៅ​តាម​អ៊ីនធឺណិត ត្រូវ​ពិនិត្យមើល​ការ​​ភ្ជាប់​អ៊ីនធឺណិត​របស់​អ្នក​សិន។"</string>
+    <string name="no_wifi_available" msgid="8786934834522321080">"អ្នក​ត្រូវ​​ភ្ជាប់​បណ្ដាញ​​វ៉ាយហ្វាយ​សម្រាប់​​ហៅ​តាម​អ៊ីនធឺណិត (ប្រើ​​ការកំណត់ ឥត​ខ្សែ &amp; បណ្ដាញ)។"</string>
+    <string name="no_voip" msgid="1600568347241920141">"មិន​បាន​គាំទ្រ​ការ​ហៅ​តាម​អ៊ីនធឺណិត"</string>
+    <string name="sip_system_decide" msgid="5577696249416700671">"ស្វ័យប្រវត្តិ"</string>
+    <string name="sip_always_send_keepalive" msgid="4773022409239823318">"ផ្ញើ​ជានិច្ច"</string>
+    <string name="sip_connection_service_label" msgid="9214942431972794760">"ការ​ហៅ​តាម​អ៊ីនធឺណិត​ជាប់​ជាមួយ​ស្រាប់"</string>
+</resources>

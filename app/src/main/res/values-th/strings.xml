@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="sip_settings" msgid="7083411056842490982">"การตั้งค่าการโทรทางอินเทอร์เน็ต"</string>
+    <string name="sip_accounts" msgid="5575635218475814144">"บัญชีการโทรทางอินเทอร์เน็ต (SIP)"</string>
+    <string name="sip_accounts_title" msgid="2082527045326874519">"บัญชี"</string>
+    <string name="sip_receive_calls" msgid="426678617137462173">"รับสายเรียกเข้า"</string>
+    <string name="sip_receive_calls_summary" msgid="7390078407518633658">"ลดอายุการใช้งานแบตเตอรี่"</string>
+    <string name="sip_call_options_title" msgid="1140346343222696780">"ใช้การโทรทางอินเทอร์เน็ต"</string>
+    <string name="sip_call_options_wifi_only_title" msgid="6659725576735517138">"ใช้การโทรทางอินเทอร์เน็ต (Wi-Fi เท่านั้น)"</string>
+    <string name="sip_call_options_entry_1" msgid="7217659161237099900">"สำหรับทุกสายเมื่อเครือข่ายข้อมูลใช้งานได้"</string>
+    <string name="sip_call_options_entry_2" msgid="3432624809972300467">"สำหรับโทรทางอินเทอร์เน็ตเท่านั้น"</string>
+    <string name="sip_call_options_entry_3" msgid="1493464396638124047">"ถามทุกครั้งที่โทรออก"</string>
+    <string name="sip_call_options_wifi_only_entry_1" msgid="1358513095551847314">"สำหรับการโทรออกทั้งหมด"</string>
+    <string name="pick_outgoing_call_phone_type" msgid="7140865415705473564">"โทรออก"</string>
+    <string name="pick_outgoing_sip_phone" msgid="635431914692273175">"ใช้บัญชีการโทรทางอินเทอร์เน็ต:"</string>
+    <string name="remember_my_choice" msgid="6204557816977242680">"ใช้ทุกครั้งที่โทรออกทางอินเทอร์เน็ต"</string>
+    <string name="reset_my_choice_hint" msgid="5681276499400166714">"คุณสามารถเปลี่ยนบัญชีการโทรทางอินเทอร์เน็ตที่จะใช้เป็นค่าเริ่มต้นได้จากหน้าจอโทรศัพท์ &gt; ตั้งค่า &gt; การตั้งค่าการโทรทางอินเทอร์เน็ต &gt; บัญชี"</string>
+    <string name="pstn_phone" msgid="9596332924895028">"โทรออกด้วยโทรศัพท์มือถือ"</string>
+    <string name="internet_phone" msgid="4444458244774004247">"โทรทางอินเทอร์เน็ต"</string>
+    <string name="no_sip_account_found_title" msgid="1930267380483259657">"ไม่มีบัญชีการโทรทางอินเทอร์เน็ต"</string>
+    <string name="no_sip_account_found" msgid="2584609532663311723">"ไม่มีบัญชีโทรทางอินเทอร์เน็ตสำหรับโทรศัพท์นี้ คุณต้องการเพิ่มบัญชีเลยไหม"</string>
+    <string name="sip_menu_add" msgid="220996859802365311">"เพิ่ม"</string>
+    <string name="add_sip_account" msgid="800843669753980091">"เพิ่มบัญชี"</string>
+    <string name="remove_sip_account" msgid="1367664438506503690">"นำบัญชีออก"</string>
+    <string name="sip_account_list" msgid="5610858485304821480">"บัญชี SIP"</string>
+    <string name="saving_account" msgid="5336529880235177448">"กำลังบันทึกบัญชี…"</string>
+    <string name="removing_account" msgid="5537351356808985756">"กำลังนำบัญชีออก…"</string>
+    <string name="sip_menu_save" msgid="7882219814563869225">"บันทึก"</string>
+    <string name="sip_menu_discard" msgid="2350421645423888438">"ยกเลิก"</string>
+    <string name="alert_dialog_close" msgid="1326011828713435134">"ปิดโปรไฟล์"</string>
+    <string name="alert_dialog_ok" msgid="4752048404605388940">"ตกลง"</string>
+    <string name="close_profile" msgid="3122414058856309881">"ปิด"</string>
+    <string name="primary_account_summary_with" msgid="3590771303761149724">"บัญชีหลัก <xliff:g id="REGISTRATION_STATUS">%s</xliff:g>"</string>
+    <string name="registration_status_checking_status" msgid="6136793741862200337">"กำลังตรวจสอบสถานะ..."</string>
+    <string name="registration_status_registering" msgid="2677183977796278749">"กำลังลงทะเบียน…"</string>
+    <string name="registration_status_still_trying" msgid="7648151061205513458">"กำลังพยายาม…"</string>
+    <string name="registration_status_not_receiving" msgid="7620333886153361090">"ไม่รับสาย"</string>
+    <string name="registration_status_no_data" msgid="2541999976218192413">"การลงทะเบียนบัญชีหยุดทำงานเนื่องจากไม่มีการเชื่อมต่ออินเทอร์เน็ต"</string>
+    <string name="registration_status_no_wifi_data" msgid="9154717387473039546">"การลงทะเบียนบัญชีหยุดทำงานเนื่องจากไม่มีการเชื่อมต่อ Wi-Fi"</string>
+    <string name="registration_status_not_running" msgid="514205414303796800">"การลงทะเบียนบัญชีไม่สำเร็จ"</string>
+    <string name="registration_status_done" msgid="3264961069247314253">"รับสาย"</string>
+    <string name="registration_status_failed_try_later" msgid="2199970021756384317">"การลงทะเบียนบัญชีไม่สำเร็จ: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>) จะลองอีกครั้งในภายหลัง"</string>
+    <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"การลงทะเบียนบัญชีไม่สำเร็จ: ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"</string>
+    <string name="registration_status_server_unreachable" msgid="7710275557045148634">"การลงทะเบียนบัญชีไม่สำเร็จ: ตรวจสอบชื่อเซิร์ฟเวอร์"</string>
+    <string name="third_party_account_summary" msgid="9041060473615403041">"แอป <xliff:g id="ACCOUNT_OWNER">%s</xliff:g> กำลังใช้บัญชีนี้อยู่ในขณะนี้"</string>
+    <string name="sip_edit_title" msgid="1967247832635750410">"รายละเอียดบัญชี SIP"</string>
+    <string name="sip_edit_new_title" msgid="266414118302574305">"รายละเอียดบัญชี SIP"</string>
+    <string name="domain_address_title" msgid="1968479941328225423">"เซิร์ฟเวอร์"</string>
+    <string name="username_title" msgid="6770064611005663470">"ชื่อผู้ใช้"</string>
+    <string name="password_title" msgid="5289013731515564295">"รหัสผ่าน"</string>
+    <string name="display_name_title" msgid="579241787583079773">"ชื่อที่แสดง"</string>
+    <string name="proxy_address_title" msgid="6890163365640631841">"ที่อยู่พร็อกซีขาออก"</string>
+    <string name="port_title" msgid="6693965912656593862">"หมายเลขพอร์ต"</string>
+    <string name="transport_title" msgid="889155457465372527">"ประเภทการส่งผ่านข้อมูล"</string>
+    <string name="send_keepalive_title" msgid="599627072150501159">"ส่งแบบ keep-alive"</string>
+    <string name="set_primary_title" msgid="4418523822344363725">"ตั้งค่าเป็นบัญชีหลัก"</string>
+    <string name="set_primary_summary" msgid="8917913711425551278">"ใช้สำหรับการโทรออก"</string>
+    <string name="advanced_settings" msgid="6622996380747040711">"การตั้งค่าที่ไม่บังคับ"</string>
+    <string name="auth_username_title" msgid="8262491689004708265">"ชื่อผู้ใช้สำหรับตรวจสอบสิทธิ์"</string>
+    <string name="auth_username_summary" msgid="941160241371436473">"ชื่อผู้ใช้ที่ใช้ในการตรวจสอบสิทธิ์"</string>
+    <string name="default_preference_summary" msgid="1979249643719483249">"&lt;ไม่ได้ตั้งค่า&gt;"</string>
+    <string name="display_name_summary" msgid="7155076491675565407">"&lt;เหมือนกับชื่อผู้ใช้&gt;"</string>
+    <string name="optional_summary" msgid="2363105560396317624">"&lt;ไม่บังคับ&gt;"</string>
+    <string name="advanced_settings_show" msgid="7838761602853998622">"▷ แตะเพื่อแสดงทั้งหมด"</string>
+    <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ แตะเพื่อซ่อนทั้งหมด"</string>
+    <string name="empty_alert" msgid="6659484914371384024">"ต้องระบุ <xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> และไม่สามารถปล่อยว่างได้"</string>
+    <string name="not_a_valid_port" msgid="7931422555587011830">"หมายเลขพอร์ตควรอยู่ระหว่าง 1000 ถึง 65534"</string>
+    <string name="no_internet_available_title" msgid="5967612364991972539">"ไม่มีการเชื่อมต่ออินเทอร์เน็ต"</string>
+    <string name="no_wifi_available_title" msgid="3560623175076099410">"ไม่มีการเชื่อมต่อ Wi-Fi"</string>
+    <string name="no_internet_available" msgid="3166751740849243568">"หากต้องการโทรออกทางอินเทอร์เน็ต ให้ตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณก่อน"</string>
+    <string name="no_wifi_available" msgid="8786934834522321080">"คุณจำเป็นต้องเชื่อมต่อกับเครือข่าย Wi-Fi สำหรับการโทรทางอินเทอร์เน็ต (ใช้การตั้งค่าระบบไร้สายและเครือข่าย)"</string>
+    <string name="no_voip" msgid="1600568347241920141">"ไม่สนับสนุนการโทรทางอินเทอร์เน็ต"</string>
+    <string name="sip_system_decide" msgid="5577696249416700671">"อัตโนมัติ"</string>
+    <string name="sip_always_send_keepalive" msgid="4773022409239823318">"ส่งเสมอ"</string>
+    <string name="sip_connection_service_label" msgid="9214942431972794760">"การโทรทางอินเทอร์เน็ตในตัว"</string>
+</resources>
