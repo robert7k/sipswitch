@@ -4,7 +4,6 @@
     android:versionCode="10"
     android:versionName="1.1.0">
 
-    <uses-sdk android:targetSdkVersion="21" android:minSdkVersion="10" />
 <!--     <uses-permission android:name="android.permission.USE_SIP"/> -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-feature android:name="android.software.sip.voip" android:required="true"/>

@@ -8,7 +8,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Debug;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -27,10 +26,8 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	 * Action string for the SIP call option configuration changed intent.
 	 * This is used to communicate  change to the SIP call option, triggering re-registration of
 	 * the SIP phone accounts.
-	 * Internal use only.
-	 * @hide
 	 */
-	public static final String ACTION_SIP_CALL_OPTION_CHANGED =
+	private static final String ACTION_SIP_CALL_OPTION_CHANGED =
 			"com.android.phone.SIP_CALL_OPTION_CHANGED";
 	private static final String LOG = SipSwitchActivity.class.getName();
 
@@ -160,8 +157,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	private RemoteViews getRemoteViews (final Context context, final int appWidgetId) {
-		final RemoteViews views = new RemoteViews(context.getPackageName(), layoutId);
-		return views;
+		return new RemoteViews(context.getPackageName(), layoutId);
 	}
 
 	private void setCallMode(final Context context, final String callMode) {
