@@ -61,7 +61,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		for (final int widgetId : widgetIds) {
 			final RemoteViews views = getRemoteViews(context, widgetId);
 
-			views.setImageViewResource(R.id.img_sip, R.drawable.sip_on);
+			views.setImageViewResource(R.id.img_sip, R.mipmap.sip_settings);
 			views.setImageViewResource(R.id.ind_mode, getModeIndicator(callMode));
 			views.setImageViewResource(R.id.img_mode, getModeImage(callMode));
 
@@ -239,10 +239,10 @@ public class SipSwitchActivity extends AppWidgetProvider {
 
 	private int getModeImage(final String callMode) {
 		if (SIP_ASK_ME_EACH_TIME.equals(callMode))
-			return R.drawable.mode_ask;
+			return R.mipmap.mode_ask;
 		else if (SIP_ADDRESS_ONLY.equals(callMode))
-			return R.drawable.mode_phone;
+			return R.mipmap.mode_phone;
 		else
-			return R.drawable.mode_sip;
+			return R.mipmap.mode_sip;
 	}
 }
