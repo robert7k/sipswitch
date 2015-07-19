@@ -13,6 +13,9 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Robert G. Siebeck <robert@siebeck.org>
  *
@@ -37,7 +40,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		SIP_ADDRESS_ONLY = "SIP_ADDRESS_ONLY",
 		SIP_ASK_ME_EACH_TIME = "SIP_ASK_ME_EACH_TIME";
 
-	private int layoutId = R.layout.widget_layout;
+	private static final Map<Integer,RemoteViews> remoteViewsMap = new HashMap<>();
 
 	@Override
 	public void onUpdate(final Context context,
@@ -84,6 +87,14 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	}
 
 	@Override
+	public void onDeleted(Context context, int[] appWidgetIds) {
+		for (final int widgetId : appWidgetIds)
+			deleteRemoteViews(widgetId);
+
+		super.onDeleted(context, appWidgetIds);
+	}
+
+	@Override
 	public void onReceive(final Context context, final Intent intent) {
 		final String action = intent.getAction();
 		if (ENABLE_SIP_ACTION.equals(action)) {
@@ -122,7 +133,8 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			final int spanY = intent.getExtras().getInt("spanY");
 			final int appWidgetId = intent.getExtras().getInt("appWidgetId");
 			Log.i(LOG, "Resized to " + spanX + " * " + spanY);
-			layoutId = spanX > 1 ? R.layout.widget_layout : R.layout.widget_layout_small;
+			int layoutId = spanX > 1 ? R.layout.widget_layout : R.layout.widget_layout_small;
+			addRemoteViews(context, appWidgetId, layoutId);
 			final RemoteViews views = getRemoteViews(context, appWidgetId);
 
 			final AppWidgetManager appWidgetManager =
@@ -140,7 +152,8 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			final android.os.Bundle newOptions) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 			final int width = newOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
-			layoutId = width < 100 ? R.layout.widget_layout_small : R.layout.widget_layout;
+			int layoutId = width < 100 ? R.layout.widget_layout_small : R.layout.widget_layout;
+			addRemoteViews(context, appWidgetId, layoutId);
 		}
 
 		final RemoteViews views = getRemoteViews(context, appWidgetId);
@@ -152,12 +165,23 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	private void updateWidget(final Context context, final AppWidgetManager appWidgetManager,
 			final int appWidgetId, final RemoteViews views) {
 		appWidgetManager.updateAppWidget(appWidgetId, views);
-		onUpdate(context, appWidgetManager, new int[] {appWidgetId});
+		onUpdate(context, appWidgetManager, new int[]{appWidgetId});
 	}
 
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	private RemoteViews getRemoteViews (final Context context, final int appWidgetId) {
-		return new RemoteViews(context.getPackageName(), layoutId);
+		if (!remoteViewsMap.containsKey(appWidgetId))
+			addRemoteViews(context, appWidgetId, R.layout.widget_layout);
+		return remoteViewsMap.get(appWidgetId);
+	}
+
+	private void addRemoteViews(final Context context, final int appWidgetId, final int layoutId) {
+		RemoteViews views = new RemoteViews(context.getPackageName(), layoutId);
+		remoteViewsMap.put(appWidgetId, views);
+	}
+
+	private void deleteRemoteViews(final int appWidgetId) {
+		remoteViewsMap.remove(appWidgetId);
 	}
 
 	private void setCallMode(final Context context, final String callMode) {
