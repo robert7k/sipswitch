@@ -16,8 +16,7 @@ gen/
 #Gradle and IDEA stuff
 local.properties
 .gradle
-.idea/workspace.xml
-.idea/libraries
+.idea
 
 # Local stuff
 .svn
