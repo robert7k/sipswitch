@@ -1,0 +1,3 @@
+[submodule "app/external/android_prebuilts_cmsdk"]
+	path = app/external/android_prebuilts_cmsdk
+	url = https://github.com/CyanogenMod/android_prebuilts_cmsdk

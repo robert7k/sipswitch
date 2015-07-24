@@ -16,6 +16,9 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map;
 
+import cyanogenmod.app.CMStatusBarManager;
+import cyanogenmod.app.CustomTile;
+
 /**
  * @author Robert G. Siebeck <robert@siebeck.org>
  *
@@ -25,6 +28,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		ENABLE_SIP_ACTION = "eu.siebeck.sipswitch.ENABLE_SIP",
 		CALL_MODE = "eu.siebeck.sipswitch.CALL_MODE",
 		EXTRA_CALL_MODE = "eu.siebeck.sipswitch.EXTRA_CALL_MODE";
+	private int SIP_SWITCH_TILE_ID = 1;
 	/**
 	 * Action string for the SIP call option configuration changed intent.
 	 * This is used to communicate  change to the SIP call option, triggering re-registration of
@@ -41,6 +45,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		SIP_ASK_ME_EACH_TIME = "SIP_ASK_ME_EACH_TIME";
 
 	private static final Map<Integer,RemoteViews> remoteViewsMap = new HashMap<>();
+	private static CustomTile mCustomTile;
 
 	@Override
 	public void onUpdate(final Context context,
@@ -83,6 +88,30 @@ public class SipSwitchActivity extends AppWidgetProvider {
 
 			appWidgetManager.updateAppWidget(widgetId, views);
 		}
+
+		final Intent sipSettingsIntent = new Intent();
+		final String sipSettingsComponentName;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			// XXX PhoneAccountSettingsActivity is not exported by phone app. We could only call it with root access. For now, we simply call the parent activity CallFeaturesSetting and let the user navigate to the SIP settings.
+			// sipSettingsComponentName = "com.android.phone/.settings.PhoneAccountSettingsActivity";
+			sipSettingsComponentName = "com.android.phone/.CallFeaturesSetting";
+		} else {
+			sipSettingsComponentName = "com.android.phone/.sip.SipSettings";
+		}
+		final ComponentName sipSettingsComponent = ComponentName.unflattenFromString(sipSettingsComponentName);
+		sipSettingsIntent.setComponent(sipSettingsComponent);
+		sipSettingsIntent.setAction("android.intent.action.MAIN");
+		sipSettingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+		mCustomTile = new CustomTile.Builder(context)
+				.setOnClickIntent(pendingCallModeClickIntent)
+				.setOnSettingsClickIntent(sipSettingsIntent)
+				.setContentDescription(R.string.sip_settings)
+				.setLabel(context.getString(getModeToast(callMode)))
+				.setIcon(getModeImage(callMode))
+				.build();
+		CMStatusBarManager.getInstance(context)
+				.publishTile(SIP_SWITCH_TILE_ID, mCustomTile);
 	}
 
 	@Override
