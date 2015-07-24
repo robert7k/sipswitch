@@ -58,6 +58,19 @@ public class SipSwitchActivity extends AppWidgetProvider {
 				setCallMode(context, SIP_ASK_ME_EACH_TIME);
 		}
 
+		final Intent enableSipClickIntent = new Intent(context, SipSwitchActivity.class);
+		enableSipClickIntent.setAction(ENABLE_SIP_ACTION);
+		final PendingIntent pendingSipClickIntent = PendingIntent.getBroadcast(
+				context, 0, enableSipClickIntent,
+				PendingIntent.FLAG_UPDATE_CURRENT);
+
+		final Intent callModeClickIntent = new Intent(context, SipSwitchActivity.class);
+		callModeClickIntent.setAction(CALL_MODE);
+		callModeClickIntent.putExtra(EXTRA_CALL_MODE, callMode);
+		final PendingIntent pendingCallModeClickIntent = PendingIntent
+				.getBroadcast(context, 0, callModeClickIntent,
+						PendingIntent.FLAG_UPDATE_CURRENT);
+
 		for (final int widgetId : widgetIds) {
 			final RemoteViews views = getRemoteViews(context, widgetId);
 
@@ -65,21 +78,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			views.setImageViewResource(R.id.ind_mode, getModeIndicator(callMode));
 			views.setImageViewResource(R.id.img_mode, getModeImage(callMode));
 
-			final Intent enableSipClickIntent = new Intent(context, SipSwitchActivity.class);
-			enableSipClickIntent.setAction(ENABLE_SIP_ACTION);
-
-			final PendingIntent pendingSipClickIntent = PendingIntent.getBroadcast(
-					context, 0, enableSipClickIntent,
-					PendingIntent.FLAG_UPDATE_CURRENT);
 			views.setOnClickPendingIntent(R.id.sipButton, pendingSipClickIntent);
-
-			final Intent callModeClickIntent = new Intent(context, SipSwitchActivity.class);
-			callModeClickIntent.setAction(CALL_MODE);
-			callModeClickIntent.putExtra(EXTRA_CALL_MODE, callMode);
-
-			final PendingIntent pendingCallModeClickIntent = PendingIntent
-					.getBroadcast(context, 0, callModeClickIntent,
-							PendingIntent.FLAG_UPDATE_CURRENT);
 			views.setOnClickPendingIntent(R.id.callModeButton, pendingCallModeClickIntent);
 
 			appWidgetManager.updateAppWidget(widgetId, views);
