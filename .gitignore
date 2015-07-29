@@ -21,5 +21,3 @@ local.properties
 # Local stuff
 .svn
 .directory
-
-app/app.iml
