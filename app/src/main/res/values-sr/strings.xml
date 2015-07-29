@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="sip_settings" msgid="7083411056842490982">"Подешавања интернет позива"</string>
+    <string name="sip_accounts" msgid="5575635218475814144">"Налози за интернет позиве (SIP)"</string>
+    <string name="sip_accounts_title" msgid="2082527045326874519">"Налози"</string>
+    <string name="sip_receive_calls" msgid="426678617137462173">"Примај долазне позиве"</string>
+    <string name="sip_receive_calls_summary" msgid="7390078407518633658">"Смањује трајање батерије"</string>
+    <string name="sip_call_options_title" msgid="1140346343222696780">"Користите интернет позиве"</string>
+    <string name="sip_call_options_wifi_only_title" msgid="6659725576735517138">"Користите интернет позиве (само Wi-Fi)"</string>
+    <string name="sip_call_options_entry_1" msgid="7217659161237099900">"За све позиве када је мрежа за пренос података доступна"</string>
+    <string name="sip_call_options_entry_2" msgid="3432624809972300467">"Само за интернет позиве"</string>
+    <string name="sip_call_options_entry_3" msgid="1493464396638124047">"Питај за сваки позив"</string>
+    <string name="sip_call_options_wifi_only_entry_1" msgid="1358513095551847314">"За све позиве"</string>
+    <string name="pick_outgoing_call_phone_type" msgid="7140865415705473564">"Упутите позив"</string>
+    <string name="pick_outgoing_sip_phone" msgid="635431914692273175">"Користите налог за интернет позиве:"</string>
+    <string name="remember_my_choice" msgid="6204557816977242680">"Увек користи за упућивање интернет позива"</string>
+    <string name="reset_my_choice_hint" msgid="5681276499400166714">"Можете да промените налог за интернет позиве који ће се подразумевано користити на екрану Телефон &gt; Подешавања &gt; Подешавања интернет позива &gt; Налози."</string>
+    <string name="pstn_phone" msgid="9596332924895028">"Позив ка мобилном телефону"</string>
+    <string name="internet_phone" msgid="4444458244774004247">"Интернет позив"</string>
+    <string name="no_sip_account_found_title" msgid="1930267380483259657">"Нема налога за интернет позиве"</string>
+    <string name="no_sip_account_found" msgid="2584609532663311723">"Нема налога за интернет позиве на овом телефону. Да ли желите сада да додате један?"</string>
+    <string name="sip_menu_add" msgid="220996859802365311">"Додај"</string>
+    <string name="add_sip_account" msgid="800843669753980091">"Додај налог"</string>
+    <string name="remove_sip_account" msgid="1367664438506503690">"Уклони налог"</string>
+    <string name="sip_account_list" msgid="5610858485304821480">"SIP налози"</string>
+    <string name="saving_account" msgid="5336529880235177448">"Чување налога..."</string>
+    <string name="removing_account" msgid="5537351356808985756">"Уклањање налога..."</string>
+    <string name="sip_menu_save" msgid="7882219814563869225">"Сачувај"</string>
+    <string name="sip_menu_discard" msgid="2350421645423888438">"Одбаци"</string>
+    <string name="alert_dialog_close" msgid="1326011828713435134">"Затворите профил"</string>
+    <string name="alert_dialog_ok" msgid="4752048404605388940">"Потврди"</string>
+    <string name="close_profile" msgid="3122414058856309881">"Затвори"</string>
+    <string name="primary_account_summary_with" msgid="3590771303761149724">"Примарни налог. <xliff:g id="REGISTRATION_STATUS">%s</xliff:g>"</string>
+    <string name="registration_status_checking_status" msgid="6136793741862200337">"Провера статуса..."</string>
+    <string name="registration_status_registering" msgid="2677183977796278749">"Регистровање..."</string>
+    <string name="registration_status_still_trying" msgid="7648151061205513458">"И даље покушава..."</string>
+    <string name="registration_status_not_receiving" msgid="7620333886153361090">"Не примамо позиве."</string>
+    <string name="registration_status_no_data" msgid="2541999976218192413">"Регистрација налога је заустављена зато што не постоји интернет веза."</string>
+    <string name="registration_status_no_wifi_data" msgid="9154717387473039546">"Регистрација налога је заустављена зато што не постоји Wi-Fi веза."</string>
+    <string name="registration_status_not_running" msgid="514205414303796800">"Регистрација налога није успела."</string>
+    <string name="registration_status_done" msgid="3264961069247314253">"Примамо позиве."</string>
+    <string name="registration_status_failed_try_later" msgid="2199970021756384317">"Регистрација налога није успела: <xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>; покушаћемо касније"</string>
+    <string name="registration_status_invalid_credentials" msgid="8406872554323334182">"Регистрација налога није успела: нетачно корисничко име или лозинка."</string>
+    <string name="registration_status_server_unreachable" msgid="7710275557045148634">"Регистрација налога није успела: Проверите назив сервера."</string>
+    <string name="third_party_account_summary" msgid="9041060473615403041">"Овај налог тренутно користи апликација <xliff:g id="ACCOUNT_OWNER">%s</xliff:g>."</string>
+    <string name="sip_edit_title" msgid="1967247832635750410">"Детаљи о SIP налогу"</string>
+    <string name="sip_edit_new_title" msgid="266414118302574305">"Детаљи о SIP налогу"</string>
+    <string name="domain_address_title" msgid="1968479941328225423">"Сервер"</string>
+    <string name="username_title" msgid="6770064611005663470">"Корисничко име"</string>
+    <string name="password_title" msgid="5289013731515564295">"Лозинка"</string>
+    <string name="display_name_title" msgid="579241787583079773">"Име за приказ"</string>
+    <string name="proxy_address_title" msgid="6890163365640631841">"Одлазна адреса проксија"</string>
+    <string name="port_title" msgid="6693965912656593862">"Број порта"</string>
+    <string name="transport_title" msgid="889155457465372527">"Тип преноса"</string>
+    <string name="send_keepalive_title" msgid="599627072150501159">"Пошаљи keep-alive поруку"</string>
+    <string name="set_primary_title" msgid="4418523822344363725">"Подеси као примарни налог"</string>
+    <string name="set_primary_summary" msgid="8917913711425551278">"Користи се за одлазне позиве"</string>
+    <string name="advanced_settings" msgid="6622996380747040711">"Опционална подешавања"</string>
+    <string name="auth_username_title" msgid="8262491689004708265">"Корисничко име за потврду идентитета"</string>
+    <string name="auth_username_summary" msgid="941160241371436473">"За потврду идентитета користи се корисничко име"</string>
+    <string name="default_preference_summary" msgid="1979249643719483249">"&lt;Није подешено&gt;"</string>
+    <string name="display_name_summary" msgid="7155076491675565407">"&lt;Исто као корисничко име&gt;"</string>
+    <string name="optional_summary" msgid="2363105560396317624">"&lt;Опционално&gt;"</string>
+    <string name="advanced_settings_show" msgid="7838761602853998622">"▷ Додирните да бисте приказали све"</string>
+    <string name="advanced_settings_hide" msgid="3480554978705290228">"▽ Додирните да бисте сакрили све"</string>
+    <string name="empty_alert" msgid="6659484914371384024">"Поље <xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> је обавезно и не може да буде празно."</string>
+    <string name="not_a_valid_port" msgid="7931422555587011830">"Број порта би требало да буде између 1000 и 65.534."</string>
+    <string name="no_internet_available_title" msgid="5967612364991972539">"Нема интернет везе"</string>
+    <string name="no_wifi_available_title" msgid="3560623175076099410">"Не постоји Wi-Fi веза"</string>
+    <string name="no_internet_available" msgid="3166751740849243568">"Да бисте упутили интернет позив, прво проверите интернет везу."</string>
+    <string name="no_wifi_available" msgid="8786934834522321080">"Потребно је да се повежете са Wi-Fi мрежом за интернет позиве (користите Подешавања бежичне везе и мреже)."</string>
+    <string name="no_voip" msgid="1600568347241920141">"Интернет позиви нису подржани"</string>
+    <string name="sip_system_decide" msgid="5577696249416700671">"Аутоматски"</string>
+    <string name="sip_always_send_keepalive" msgid="4773022409239823318">"Увек шаљи"</string>
+    <string name="sip_connection_service_label" msgid="9214942431972794760">"Уграђено позивање преко интернета"</string>
+</resources>

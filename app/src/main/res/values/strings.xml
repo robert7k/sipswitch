@@ -5,7 +5,8 @@
     <string name="setting_not_supported">SIP settings could not be read. Please make sure your
         phone supports SIP and you have configured at leat one account.</string>
 	<string name="sip">SIP</string>
-	<string name="mode_ask">Asking before each call whether to use SIP.</string>
-	<string name="mode_sip">Using SIP for all calls.</string>
-	<string name="mode_phone">Using SIP only for calls to SIP numbers.</string>
+	<string name="toast">%1$s: <b>%2$s</b></string>
+	<string name="sip_call_options_wifi_only_entry_1">"For all calls"</string>
+	<string name="sip_call_options_entry_2">"Only for Internet calls"</string>
+	<string name="sip_call_options_entry_3">"Ask for each call"</string>
 </resources>

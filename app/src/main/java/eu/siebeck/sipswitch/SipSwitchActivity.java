@@ -8,11 +8,16 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Debug;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import cyanogenmod.app.CMStatusBarManager;
+import cyanogenmod.app.CustomTile;
 
 /**
  * @author Robert G. Siebeck <robert@siebeck.org>
@@ -23,14 +28,13 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		ENABLE_SIP_ACTION = "eu.siebeck.sipswitch.ENABLE_SIP",
 		CALL_MODE = "eu.siebeck.sipswitch.CALL_MODE",
 		EXTRA_CALL_MODE = "eu.siebeck.sipswitch.EXTRA_CALL_MODE";
+	private int SIP_SWITCH_TILE_ID = 1;
 	/**
 	 * Action string for the SIP call option configuration changed intent.
 	 * This is used to communicate  change to the SIP call option, triggering re-registration of
 	 * the SIP phone accounts.
-	 * Internal use only.
-	 * @hide
 	 */
-	public static final String ACTION_SIP_CALL_OPTION_CHANGED =
+	private static final String ACTION_SIP_CALL_OPTION_CHANGED =
 			"com.android.phone.SIP_CALL_OPTION_CHANGED";
 	private static final String LOG = SipSwitchActivity.class.getName();
 
@@ -40,7 +44,8 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		SIP_ADDRESS_ONLY = "SIP_ADDRESS_ONLY",
 		SIP_ASK_ME_EACH_TIME = "SIP_ASK_ME_EACH_TIME";
 
-	private int layoutId = R.layout.widget_layout;
+	private static final Map<Integer,RemoteViews> remoteViewsMap = new HashMap<>();
+	private static CustomTile mCustomTile;
 
 	@Override
 	public void onUpdate(final Context context,
@@ -58,32 +63,63 @@ public class SipSwitchActivity extends AppWidgetProvider {
 				setCallMode(context, SIP_ASK_ME_EACH_TIME);
 		}
 
+		final Intent enableSipClickIntent = new Intent(context, SipSwitchActivity.class);
+		enableSipClickIntent.setAction(ENABLE_SIP_ACTION);
+		final PendingIntent pendingSipClickIntent = PendingIntent.getBroadcast(
+				context, 0, enableSipClickIntent,
+				PendingIntent.FLAG_UPDATE_CURRENT);
+
+		final Intent callModeClickIntent = new Intent(context, SipSwitchActivity.class);
+		callModeClickIntent.setAction(CALL_MODE);
+		callModeClickIntent.putExtra(EXTRA_CALL_MODE, callMode);
+		final PendingIntent pendingCallModeClickIntent = PendingIntent
+				.getBroadcast(context, 0, callModeClickIntent,
+						PendingIntent.FLAG_UPDATE_CURRENT);
+
 		for (final int widgetId : widgetIds) {
 			final RemoteViews views = getRemoteViews(context, widgetId);
 
-			views.setImageViewResource(R.id.img_sip, R.drawable.sip_on);
+			views.setImageViewResource(R.id.img_sip, R.mipmap.sip_settings);
 			views.setImageViewResource(R.id.ind_mode, getModeIndicator(callMode));
 			views.setImageViewResource(R.id.img_mode, getModeImage(callMode));
 
-			final Intent enableSipClickIntent = new Intent(context, SipSwitchActivity.class);
-			enableSipClickIntent.setAction(ENABLE_SIP_ACTION);
-
-			final PendingIntent pendingSipClickIntent = PendingIntent.getBroadcast(
-					context, 0, enableSipClickIntent,
-					PendingIntent.FLAG_UPDATE_CURRENT);
 			views.setOnClickPendingIntent(R.id.sipButton, pendingSipClickIntent);
-
-			final Intent callModeClickIntent = new Intent(context, SipSwitchActivity.class);
-			callModeClickIntent.setAction(CALL_MODE);
-			callModeClickIntent.putExtra(EXTRA_CALL_MODE, callMode);
-
-			final PendingIntent pendingCallModeClickIntent = PendingIntent
-					.getBroadcast(context, 0, callModeClickIntent,
-							PendingIntent.FLAG_UPDATE_CURRENT);
 			views.setOnClickPendingIntent(R.id.callModeButton, pendingCallModeClickIntent);
 
 			appWidgetManager.updateAppWidget(widgetId, views);
 		}
+
+		final Intent sipSettingsIntent = new Intent();
+		final String sipSettingsComponentName;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			// XXX PhoneAccountSettingsActivity is not exported by phone app. We could only call it with root access. For now, we simply call the parent activity CallFeaturesSetting and let the user navigate to the SIP settings.
+			// sipSettingsComponentName = "com.android.phone/.settings.PhoneAccountSettingsActivity";
+			sipSettingsComponentName = "com.android.phone/.CallFeaturesSetting";
+		} else {
+			sipSettingsComponentName = "com.android.phone/.sip.SipSettings";
+		}
+		final ComponentName sipSettingsComponent = ComponentName.unflattenFromString(sipSettingsComponentName);
+		sipSettingsIntent.setComponent(sipSettingsComponent);
+		sipSettingsIntent.setAction("android.intent.action.MAIN");
+		sipSettingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+		mCustomTile = new CustomTile.Builder(context)
+				.setOnClickIntent(pendingCallModeClickIntent)
+				.setOnSettingsClickIntent(sipSettingsIntent)
+				.setContentDescription(R.string.sip_settings)
+				.setLabel(context.getString(getModeToast(callMode)))
+				.setIcon(getModeImage(callMode))
+				.build();
+		CMStatusBarManager.getInstance(context)
+				.publishTile(SIP_SWITCH_TILE_ID, mCustomTile);
+	}
+
+	@Override
+	public void onDeleted(Context context, int[] appWidgetIds) {
+		for (final int widgetId : appWidgetIds)
+			deleteRemoteViews(widgetId);
+
+		super.onDeleted(context, appWidgetIds);
 	}
 
 	@Override
@@ -116,13 +152,17 @@ public class SipSwitchActivity extends AppWidgetProvider {
 
 			updateWidgetView(context);
 
-			Toast.makeText(context, getModeToast(callMode), Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, context.getString(R.string.toast,
+						context.getString(R.string.sip),
+						context.getString(getModeToast(callMode))),
+					Toast.LENGTH_SHORT).show();
 		} else if ("com.motorola.blur.home.ACTION_SET_WIDGET_SIZE".equals(action)) {
 			final int spanX = intent.getExtras().getInt("spanX");
 			final int spanY = intent.getExtras().getInt("spanY");
 			final int appWidgetId = intent.getExtras().getInt("appWidgetId");
 			Log.i(LOG, "Resized to " + spanX + " * " + spanY);
-			layoutId = spanX > 1 ? R.layout.widget_layout : R.layout.widget_layout_small;
+			int layoutId = spanX > 1 ? R.layout.widget_layout : R.layout.widget_layout_small;
+			addRemoteViews(context, appWidgetId, layoutId);
 			final RemoteViews views = getRemoteViews(context, appWidgetId);
 
 			final AppWidgetManager appWidgetManager =
@@ -140,7 +180,8 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			final android.os.Bundle newOptions) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 			final int width = newOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
-			layoutId = width < 100 ? R.layout.widget_layout_small : R.layout.widget_layout;
+			int layoutId = width < 100 ? R.layout.widget_layout_small : R.layout.widget_layout;
+			addRemoteViews(context, appWidgetId, layoutId);
 		}
 
 		final RemoteViews views = getRemoteViews(context, appWidgetId);
@@ -152,13 +193,23 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	private void updateWidget(final Context context, final AppWidgetManager appWidgetManager,
 			final int appWidgetId, final RemoteViews views) {
 		appWidgetManager.updateAppWidget(appWidgetId, views);
-		onUpdate(context, appWidgetManager, new int[] {appWidgetId});
+		onUpdate(context, appWidgetManager, new int[]{appWidgetId});
 	}
 
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	private RemoteViews getRemoteViews (final Context context, final int appWidgetId) {
-		final RemoteViews views = new RemoteViews(context.getPackageName(), layoutId);
-		return views;
+		if (!remoteViewsMap.containsKey(appWidgetId))
+			addRemoteViews(context, appWidgetId, R.layout.widget_layout);
+		return remoteViewsMap.get(appWidgetId);
+	}
+
+	private void addRemoteViews(final Context context, final int appWidgetId, final int layoutId) {
+		RemoteViews views = new RemoteViews(context.getPackageName(), layoutId);
+		remoteViewsMap.put(appWidgetId, views);
+	}
+
+	private void deleteRemoteViews(final int appWidgetId) {
+		remoteViewsMap.remove(appWidgetId);
 	}
 
 	private void setCallMode(final Context context, final String callMode) {
@@ -187,11 +238,11 @@ public class SipSwitchActivity extends AppWidgetProvider {
 
 	private int getModeToast(final String callMode) {
 		if (SIP_ASK_ME_EACH_TIME.equals(callMode))
-			return R.string.mode_ask;
+			return R.string.sip_call_options_entry_3;
 		else if (SIP_ADDRESS_ONLY.equals(callMode))
-			return R.string.mode_phone;
+			return R.string.sip_call_options_entry_2;
 		else
-			return R.string.mode_sip;
+			return R.string.sip_call_options_wifi_only_entry_1;
 	}
 
 	private String toggleCallMode(final String callMode) {
@@ -216,10 +267,10 @@ public class SipSwitchActivity extends AppWidgetProvider {
 
 	private int getModeImage(final String callMode) {
 		if (SIP_ASK_ME_EACH_TIME.equals(callMode))
-			return R.drawable.mode_ask;
+			return R.mipmap.mode_ask;
 		else if (SIP_ADDRESS_ONLY.equals(callMode))
-			return R.drawable.mode_phone;
+			return R.mipmap.mode_phone;
 		else
-			return R.drawable.mode_sip;
+			return R.mipmap.mode_sip;
 	}
 }

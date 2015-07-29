@@ -4,15 +4,15 @@
     android:versionCode="10"
     android:versionName="1.1.0">
 
-    <uses-sdk android:targetSdkVersion="21" android:minSdkVersion="10" />
 <!--     <uses-permission android:name="android.permission.USE_SIP"/> -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="cyanogenmod.permission.PUBLISH_CUSTOM_TILE" />
     <uses-feature android:name="android.software.sip.voip" android:required="true"/>
     <uses-feature android:name="android.software.sip" android:required="true"/>
     
 
     <application
-        android:icon="@drawable/icon"
+        android:icon="@mipmap/mode_sip"
         android:label="@string/app_name" 
         android:allowBackup="false">
         <receiver android:name=".SipSwitchActivity" android:label="SIP Switch">
