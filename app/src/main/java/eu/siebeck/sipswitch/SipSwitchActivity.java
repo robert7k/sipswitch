@@ -45,7 +45,6 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		SIP_ASK_ME_EACH_TIME = "SIP_ASK_ME_EACH_TIME";
 
 	private static final Map<Integer,RemoteViews> remoteViewsMap = new HashMap<>();
-	private static CustomTile mCustomTile;
 
 	@Override
 	public void onUpdate(final Context context,
@@ -89,21 +88,9 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			appWidgetManager.updateAppWidget(widgetId, views);
 		}
 
-		final Intent sipSettingsIntent = new Intent();
-		final String sipSettingsComponentName;
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			// XXX PhoneAccountSettingsActivity is not exported by phone app. We could only call it with root access. For now, we simply call the parent activity CallFeaturesSetting and let the user navigate to the SIP settings.
-			// sipSettingsComponentName = "com.android.phone/.settings.PhoneAccountSettingsActivity";
-			sipSettingsComponentName = "com.android.phone/.CallFeaturesSetting";
-		} else {
-			sipSettingsComponentName = "com.android.phone/.sip.SipSettings";
-		}
-		final ComponentName sipSettingsComponent = ComponentName.unflattenFromString(sipSettingsComponentName);
-		sipSettingsIntent.setComponent(sipSettingsComponent);
-		sipSettingsIntent.setAction("android.intent.action.MAIN");
-		sipSettingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		final Intent sipSettingsIntent = getSipSettingsIntent();
 
-		mCustomTile = new CustomTile.Builder(context)
+		final CustomTile mCustomTile = new CustomTile.Builder(context)
 				.setOnClickIntent(pendingCallModeClickIntent)
 				.setOnSettingsClickIntent(sipSettingsIntent)
 				.setContentDescription(R.string.sip_settings)
@@ -127,19 +114,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		final String action = intent.getAction();
 		if (ENABLE_SIP_ACTION.equals(action)) {
 			// Debug.waitForDebugger();
-			final Intent sipSettingsIntent = new Intent();
-			final String sipSettingsComponentName;
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-				// XXX PhoneAccountSettingsActivity is not exported by phone app. We could only call it with root access. For now, we simply call the parent activity CallFeaturesSetting and let the user navigate to the SIP settings.
-				// sipSettingsComponentName = "com.android.phone/.settings.PhoneAccountSettingsActivity";
-				sipSettingsComponentName = "com.android.phone/.CallFeaturesSetting";
-			} else {
-				sipSettingsComponentName = "com.android.phone/.sip.SipSettings";
-			}
-			final ComponentName sipSettingsComponent = ComponentName.unflattenFromString(sipSettingsComponentName);
-			sipSettingsIntent.setComponent(sipSettingsComponent);
-			sipSettingsIntent.setAction("android.intent.action.MAIN");
-			sipSettingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			final Intent sipSettingsIntent = getSipSettingsIntent();
 			try {
 				context.startActivity(sipSettingsIntent);
 			} catch(final Exception e) {
@@ -170,6 +145,25 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			updateWidget(context, appWidgetManager, appWidgetId, views);
 		}
 		super.onReceive(context, intent);
+	}
+
+	private Intent getSipSettingsIntent() {
+		final Intent sipSettingsIntent = new Intent();
+		final String componentName;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // XXX PhoneAccountSettingsActivity is not exported by phone app. We could only
+            // call it with root access. For now, we simply call the parent activity
+            // CallFeaturesSetting and let the user navigate to the SIP settings.
+            // sipSettingsComponentName = "com.android.phone/.settings.PhoneAccountSettingsActivity";
+            componentName = "com.android.phone/.CallFeaturesSetting";
+        } else {
+            componentName = "com.android.phone/.sip.SipSettings";
+        }
+		final ComponentName sipSettingsComponent = ComponentName.unflattenFromString(componentName);
+		sipSettingsIntent.setComponent(sipSettingsComponent);
+		sipSettingsIntent.setAction("android.intent.action.MAIN");
+		sipSettingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		return sipSettingsIntent;
 	}
 
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
