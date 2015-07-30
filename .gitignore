@@ -17,6 +17,7 @@ gen/
 local.properties
 .gradle
 .idea
+*iml
 
 # Local stuff
 .svn
