@@ -186,4 +186,5 @@
 	<string name="no_wifi_available_title" msgid="3560623175076099410">"No Wi-Fi connection"</string>
 	<string name="set_primary_title" msgid="4418523822344363725">"Set as primary account"</string>
 	<string name="set_primary_summary" msgid="8917913711425551278">"Used for outbound calls"</string>
+	<string name="permissions_required">Permissions to change system settings are required</string>
 </resources>

@@ -89,4 +89,5 @@
     <string name="sip_system_decide" msgid="5577696249416700671">"Automatisch"</string>
     <string name="sip_always_send_keepalive" msgid="4773022409239823318">"Immer senden"</string>
     <string name="sip_connection_service_label" msgid="9214942431972794760">"Integrierte Internettelefonie"</string>
+    <string name="permissions_required">Berechtigung für das Ändern der Systemeinstellungen benötigt</string>
 </resources>

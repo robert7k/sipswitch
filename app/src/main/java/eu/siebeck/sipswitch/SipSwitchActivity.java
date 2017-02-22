@@ -7,17 +7,22 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Debug;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import java.lang.annotation.Target;
 import java.util.HashMap;
 import java.util.Map;
 
 import cyanogenmod.app.CMStatusBarManager;
 import cyanogenmod.app.CustomTile;
+
+import static android.app.PendingIntent.getActivity;
 
 /**
  * @author Robert G. Siebeck <robert@siebeck.org>
@@ -123,14 +128,13 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		} else if (CALL_MODE.equals(action)) {
 //			Debug.waitForDebugger();
 			final String callMode = toggleCallMode(intent.getStringExtra(EXTRA_CALL_MODE));
-			setCallMode(context, callMode);
-
-			updateWidgetView(context);
-
-			Toast.makeText(context, context.getString(R.string.toast,
+			if(setCallMode(context, callMode)) {
+				updateWidgetView(context);
+				Toast.makeText(context, context.getString(R.string.toast,
 						context.getString(R.string.sip),
 						context.getString(getModeToast(callMode))),
-					Toast.LENGTH_SHORT).show();
+						Toast.LENGTH_SHORT).show();
+			}
 		} else if ("com.motorola.blur.home.ACTION_SET_WIDGET_SIZE".equals(action)) {
 			final int spanX = intent.getExtras().getInt("spanX");
 			final int spanY = intent.getExtras().getInt("spanY");
@@ -145,6 +149,28 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			updateWidget(context, appWidgetManager, appWidgetId, views);
 		}
 		super.onReceive(context, intent);
+	}
+
+	/**
+	 * Makes sure we get the permissions we need on Android > 7
+	 *
+	 * @return if the permission to write settings is present.
+	 */
+	@TargetApi(Build.VERSION_CODES.M)
+	private boolean assurePermissions(final Context context) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			if (!Settings.System.canWrite(context)) {
+				Toast.makeText(context, context.getString(R.string.toast,
+						context.getString(R.string.sip),
+						context.getString(R.string.permissions_required)),
+						Toast.LENGTH_LONG).show();
+				Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+				intent.setData(Uri.parse("package:" + context.getPackageName()));
+				context.startActivity(intent);
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private Intent getSipSettingsIntent() {
@@ -206,16 +232,22 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		remoteViewsMap.remove(appWidgetId);
 	}
 
-	private void setCallMode(final Context context, final String callMode) {
+	private boolean setCallMode(final Context context, final String callMode) {
+		if(!assurePermissions(context)) {
+			return false;
+		}
+
 		Log.i(LOG, "Setting callMode to " + callMode);
 		Settings.System.putString(context.getContentResolver(),
 				SIP_CALL_OPTIONS, callMode);
 
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
+				&& Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
 			// Notify SipAccountRegistry in the telephony layer that the configuration has changed.
 			Intent intent = new Intent(ACTION_SIP_CALL_OPTION_CHANGED);
 			context.sendBroadcast(intent);
 		}
+		return true;
 	}
 
 	private void updateWidgetView(final Context context) {
