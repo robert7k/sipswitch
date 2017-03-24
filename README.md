@@ -5,15 +5,12 @@ This simple widget allows you to disable/enable SIP through a simple widget
 on your homescreen. The widget also allows you to select the default mode for
 outgoing calls (always use SIP, always use GSM, or ask each time).
 
-You can find this Widget in Google Play store here:
+<a href="https://f-droid.org/repository/browse/?fdid=eu.siebeck.sipswitch" target="_blank">
+<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
+<a href="https://play.google.com/store/apps/details?id=eu.siebeck.sipswitch" target="_blank">
+<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="80"/></a>
 
-https://play.google.com/store/apps/details?id=eu.siebeck.sipswitch
-
-It is also available on
-[fdroid.org](https://f-droid.org/repository/browse/?fdid=eu.siebeck.sipswitch)
-
-LICENSE
-=======
+# LICENSE
 
 The source code of this project has been published under the
 GNU GENERAL PUBLIC LICENSE.
