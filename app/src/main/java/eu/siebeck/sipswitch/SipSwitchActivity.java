@@ -9,20 +9,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Debug;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import java.lang.annotation.Target;
 import java.util.HashMap;
 import java.util.Map;
 
 import cyanogenmod.app.CMStatusBarManager;
 import cyanogenmod.app.CustomTile;
-
-import static android.app.PendingIntent.getActivity;
 
 /**
  * @author Robert G. Siebeck <robert@siebeck.org>
@@ -32,7 +28,9 @@ public class SipSwitchActivity extends AppWidgetProvider {
 	private static final String
 		ENABLE_SIP_ACTION = "eu.siebeck.sipswitch.ENABLE_SIP",
 		CALL_MODE = "eu.siebeck.sipswitch.CALL_MODE",
-		EXTRA_CALL_MODE = "eu.siebeck.sipswitch.EXTRA_CALL_MODE";
+		INCOMING_MODE = "eu.siebeck.sipswitch.INCOMING_MODE",
+		EXTRA_CALL_MODE = "eu.siebeck.sipswitch.EXTRA_CALL_MODE",
+		EXTRA_INCOMING_MODE = "eu.siebeck.sipswitch.EXTRA_INCOMING_MODE";
 	private int SIP_SWITCH_TILE_ID = 1;
 	/**
 	 * Action string for the SIP call option configuration changed intent.
@@ -45,6 +43,7 @@ public class SipSwitchActivity extends AppWidgetProvider {
 
 	private static final String
 		SIP_CALL_OPTIONS = "sip_call_options",
+		SIP_RECEIVE_CALLS = "sip_receive_calls",
 		SIP_ALWAYS = "SIP_ALWAYS",
 		SIP_ADDRESS_ONLY = "SIP_ADDRESS_ONLY",
 		SIP_ASK_ME_EACH_TIME = "SIP_ASK_ME_EACH_TIME";
@@ -67,6 +66,8 @@ public class SipSwitchActivity extends AppWidgetProvider {
 				setCallMode(context, SIP_ASK_ME_EACH_TIME);
 		}
 
+		final boolean incomingMode = getReceivingCallsEnabled(context);
+
 		final Intent enableSipClickIntent = new Intent(context, SipSwitchActivity.class);
 		enableSipClickIntent.setAction(ENABLE_SIP_ACTION);
 		final PendingIntent pendingSipClickIntent = PendingIntent.getBroadcast(
@@ -80,15 +81,28 @@ public class SipSwitchActivity extends AppWidgetProvider {
 				.getBroadcast(context, 0, callModeClickIntent,
 						PendingIntent.FLAG_UPDATE_CURRENT);
 
+		final Intent incomingIntent = new Intent(context, SipSwitchActivity.class);
+        incomingIntent.setAction(INCOMING_MODE);
+        incomingIntent.putExtra(EXTRA_INCOMING_MODE, !incomingMode);
+		final PendingIntent pendingIncomingClickIntent = PendingIntent
+				.getBroadcast(context, 0, incomingIntent,
+						PendingIntent.FLAG_UPDATE_CURRENT);
+
+
 		for (final int widgetId : widgetIds) {
 			final RemoteViews views = getRemoteViews(context, widgetId);
 
 			views.setImageViewResource(R.id.img_sip, R.mipmap.sip_settings);
+
 			views.setImageViewResource(R.id.ind_mode, getModeIndicator(callMode));
 			views.setImageViewResource(R.id.img_mode, getModeImage(callMode));
 
+			views.setImageViewResource(R.id.ind_incoming, getIncomingIndicator(incomingMode));
+			views.setImageViewResource(R.id.img_incoming, getIncomingImage(incomingMode));
+
 			views.setOnClickPendingIntent(R.id.sipButton, pendingSipClickIntent);
 			views.setOnClickPendingIntent(R.id.callModeButton, pendingCallModeClickIntent);
+			views.setOnClickPendingIntent(R.id.incomingButton, pendingIncomingClickIntent );
 
 			appWidgetManager.updateAppWidget(widgetId, views);
 		}
@@ -135,6 +149,14 @@ public class SipSwitchActivity extends AppWidgetProvider {
 						context.getString(getModeToast(callMode))),
 						Toast.LENGTH_SHORT).show();
 			}
+		} else if (INCOMING_MODE.equals(action))  {
+			boolean enabled = intent.getBooleanExtra(EXTRA_INCOMING_MODE, true);
+			setReceivingCallsEnabled(context, enabled);
+            Toast.makeText(context, context.getString(R.string.toast,
+                    context.getString(R.string.sip),
+                    context.getString(buildReceiveCallsToastMessage(enabled))),
+                    Toast.LENGTH_SHORT).show();
+            updateWidgetView(context);
 		} else if ("com.motorola.blur.home.ACTION_SET_WIDGET_SIZE".equals(action)) {
 			final int spanX = intent.getExtras().getInt("spanX");
 			final int spanY = intent.getExtras().getInt("spanY");
@@ -149,6 +171,23 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			updateWidget(context, appWidgetManager, appWidgetId, views);
 		}
 		super.onReceive(context, intent);
+	}
+
+
+	public void setReceivingCallsEnabled(final Context context, boolean enabled) {
+		Log.i(LOG, "Setting receiveCalls to " + enabled);
+		Settings.System.putInt(context.getContentResolver(),
+				SIP_RECEIVE_CALLS, (enabled ? 1 : 0));
+		broadcastCallOptionChanged(context);
+	}
+
+	public boolean getReceivingCallsEnabled(final Context context) {
+		try {
+			int c = Settings.System.getInt(context.getContentResolver(), SIP_RECEIVE_CALLS);
+			return c == 1;
+		} catch (Settings.SettingNotFoundException e) {
+			return false;
+		}
 	}
 
 	/**
@@ -241,13 +280,17 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		Settings.System.putString(context.getContentResolver(),
 				SIP_CALL_OPTIONS, callMode);
 
+		broadcastCallOptionChanged(context);
+		return true;
+	}
+
+	private void broadcastCallOptionChanged(Context context) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
 				&& Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
 			// Notify SipAccountRegistry in the telephony layer that the configuration has changed.
 			Intent intent = new Intent(ACTION_SIP_CALL_OPTION_CHANGED);
 			context.sendBroadcast(intent);
 		}
-		return true;
 	}
 
 	private void updateWidgetView(final Context context) {
@@ -270,6 +313,12 @@ public class SipSwitchActivity extends AppWidgetProvider {
 		else
 			return R.string.sip_call_options_wifi_only_entry_1;
 	}
+
+	private int buildReceiveCallsToastMessage(final boolean enabled) {
+        if (enabled)
+            return R.string.enabled_receiving_calls;
+        return R.string.disabled_receiving_calls;
+    }
 
 	private String toggleCallMode(final String callMode) {
 		if (SIP_ASK_ME_EACH_TIME.equals(callMode))
@@ -298,5 +347,19 @@ public class SipSwitchActivity extends AppWidgetProvider {
 			return R.mipmap.mode_phone;
 		else
 			return R.mipmap.mode_sip;
+	}
+
+	private int getIncomingImage(final boolean enabled) {
+		if (enabled)
+			return R.drawable.incoming_sip_white;
+		else
+			return R.drawable.incoming_sip_gray;
+	}
+
+	private int getIncomingIndicator(final boolean enabled) {
+		if (enabled)
+			return R.drawable.appwidget_settings_ind_on_r;
+		else
+			return R.drawable.appwidget_settings_ind_off_r;
 	}
 }
