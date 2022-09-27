@@ -22,3 +22,8 @@ local.properties
 # Local stuff
 .svn
 .directory
+
+# Release related files
+release
+keystore
+private_key.pepk
