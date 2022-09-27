@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.siebeck.sipswitch"
-    android:versionCode="12"
-    android:versionName="1.1.2">
+    android:versionCode="13"
+    android:versionName="1.1.3">
 
 <!--     <uses-permission android:name="android.permission.USE_SIP"/> -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="cyanogenmod.permission.PUBLISH_CUSTOM_TILE" />
     <uses-feature android:name="android.software.sip.voip" android:required="true"/>
     <uses-feature android:name="android.software.sip" android:required="true"/>
-    
+
 
     <application
         android:icon="@mipmap/mode_sip"
